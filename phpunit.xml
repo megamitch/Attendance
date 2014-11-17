@@ -25,7 +25,7 @@
 
 <phpunit bootstrap="Bootstrap.php">
     <logging>
-        <log type="coverage-html"  target="build/coverage" title="Mot"
+        <log type="coverage-html"  target="build/coverage" title="MotAttendance"
         charset="UTF-8" yui="true" highlight="true"
         lowUpperBound="35" highLowerBound="true" />
         <log type="coverage-clover" target="build/logs/clover.xml" />
@@ -35,7 +35,7 @@
     </logging>
 
     <testsuites>
-        <testsuite name="Mot">
+        <testsuite name="MotAttendance">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
