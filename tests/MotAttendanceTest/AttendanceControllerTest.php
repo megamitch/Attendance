@@ -26,6 +26,8 @@
 
 namespace MotAttendanceTest;
 
+use MotAttendance\Controller\AttendanceController;
+
 /**
  * MotAttendanceTest\AttendanceControllerTest
  * 
@@ -35,6 +37,7 @@ class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
 {
     public function testSampleTest()
     {
-        $this->assertTrue(true);
+        $controller = new AttendanceController();
+        $this->assertTrue($controller->sampleMethod());
     }
 }

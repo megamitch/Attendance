@@ -36,4 +36,13 @@ use Zend\Mvc\Controller\AbstractActionController;
 class AttendanceController extends AbstractActionController
 {
     
+    public function methodTest()
+    {
+        if (false) {
+            echo "this is false";
+        }
+        
+        return true;
+    }
+    
 }
