@@ -28,13 +28,38 @@ return [
     'console'   => [], //routing configuration for CLI modules
     'router'    => [
         'routes' => [
-            'mot-attendance' => [
+            'mot' => [
                 'type'      => 'Literal',
                 'options'   => [
                     'route'     => '/mot',
                     'defaults'  => [
                         'controller'    => 'Mot\Controller\Index',
                         'action'        => 'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => [
+                    'mot-attendance' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/attendance',
+                            'defaults' => [
+                                'controller'    => 'MotAttendance\Controller\Attendance',
+                                'action'        => 'index'
+                            ]
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'ob-trip' => [
+                                'type' => 'Literal',
+                                'options' => [
+                                    'route' => '/ob',
+                                    'defaults' => [
+                                        'action'        => 'official-business'
+                                    ]
+                                ]
+                            ]
+                        ]
                     ]
                 ]
             ]

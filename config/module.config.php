@@ -44,19 +44,13 @@ return [
         'not_found_template'        => 'error/404',
         'exception_template'        => 'error/index',
         'template_map'              => [
-            'mot-layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'mot-template/footer'           => __DIR__ . '/../view/layout/partial/footer.phtml',
-            'mot-template/navbar-header'           => __DIR__ . '/../view/layout/partial/navbar-header.phtml',
-            'mot-template/navbar-sidebar'           => __DIR__ . '/../view/layout/partial/navbar-sidebar.phtml',
-            'mot/index/index' => __DIR__ . '/../view/mot/index/index.phtml',
-            'error/404'               => __DIR__ . '/../view/error/404.phtml',
-            'error/index'             => __DIR__ . '/../view/error/index.phtml',
+            'mot-attendance/index/index' => __DIR__ . '/../view/mot-attendance/index/index.phtml',
         ],
         'template_path_stack'       => [
-            'mot'   => __DIR__ . '/../view'
+            'mot-attendance'   => __DIR__ . '/../view'
         ],
     ],
     'module_layouts' => [
-        'Mot' => 'mot-layout/layout'
+        'MotAttendance' => 'mot-layout/layout'
     ]
 ];

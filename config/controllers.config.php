@@ -26,6 +26,6 @@
 
 return [
     'invokables' => [
-        'Mot\Controller\Index' => 'Mot\Controller\IndexController',
+        'MotAttendance\Controller\Attendance' => 'MotAttendance\Controller\AttendanceController',
     ]
 ];

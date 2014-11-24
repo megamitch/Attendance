@@ -41,4 +41,8 @@ class AttendanceController extends AbstractActionController
         
     }
     
+    public function officialBusinessAction()
+    {
+        
+    }
 }
