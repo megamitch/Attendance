@@ -26,6 +26,6 @@
 
 return [
     'invokables' => [
-        'Mot\Controller\Index' => 'Mot\Controller\IndexController',            
+        'Mot\Controller\Index' => 'Mot\Controller\IndexController',
     ]
 ];

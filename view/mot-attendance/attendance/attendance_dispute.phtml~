@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-/**
+<!--/**
 * The MIT License
 *
 * Copyright (c) 2012-2014, contributors of Mega Mitch Credit, Inc. software project.
@@ -21,16 +20,11 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
-*/<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+*-->
+   
         <div class="row">
     <div align="left">  
-        <h2 align="left">Attendance</h2>    
+        <h2 align="left">Attendance</h2><hr/>    
         <table style="width:80%">
           <tr>
             <td>Work Date</td>
@@ -57,5 +51,3 @@
     </div>
 </div>
 
-    </body>
-</html>

@@ -1,5 +1,4 @@
-<!-- 
-/**
+<!--/**
 * The MIT License
 *
 * Copyright (c) 2012-2014, contributors of Mega Mitch Credit, Inc. software project.
@@ -21,31 +20,21 @@
 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
-*/
--->
-
-<div class="row">
+*-->
+           <div class="row">
     <div align="left">  
-        <h2 align="left">Attendance</h2><hr/>    
-        <table style="width:80%">
-          <tr>
-            <td>Work Date</td>
-            <td>Day</td>		
-            <td>Type</td>
-             <td>In</td>
-            <td>Out</td>		
-            <td>Comment</td>
-            <td>Action</td>
-          </tr>
-          <tr>
-            <td>10/14/2014</td>
-            <td>Tue</td>		
-            <td>Logged</td>
-             <td>In</td>
-            <td>08:38</td>		
-            <td>12:38</td>
-            <td><button type="button">Dispute</button> </td>
-          </tr>
-        </table>
+        <h2 align="left">Leave Form</h2>    
+	<hr/>
+	<p>Name: Maria Agwanta</p>
+	</p>Date Created:10/15/2014</p>
+	<h4>From</h4>
+	<input type="date" placeholder="Date"></input>
+	<h4>To</h4>
+	<input type="date" placeholder="Date"><br><br>
+	<textarea>Your reason here...</textarea>
+	<br>
+	<button type="button">Cancel</button>
+	<button type="button">Submit</button>
     </div>
 </div>
+
