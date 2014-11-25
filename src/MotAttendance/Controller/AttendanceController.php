@@ -45,4 +45,19 @@ class AttendanceController extends AbstractActionController
     {
         
     }
+    
+    public function leaveFormAction()
+    {
+        
+    }
+    
+    public function disputeAction()
+    {
+        
+    }
+    
+    public function attendanceDisputeAction()
+    {
+        
+    }
 }

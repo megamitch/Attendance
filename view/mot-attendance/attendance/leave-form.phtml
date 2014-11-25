@@ -21,22 +21,52 @@
 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 * THE SOFTWARE.
 *-->
-           <div class="row">
-    <div align="left">  
-        <h2 align="left">Leave Form</h2>    
-	<hr/>
-	<p>Name: Maria Agwanta</p>
-	</p>Date Created:10/15/2014</p>
-	<h4>From</h4>
-	<input type="date" placeholder="Date"></input>
-	<h4>To</h4>
-	<input type="date" placeholder="Date"><br><br>
-	<input type="radio" name="sex" value="male">W/ Pay
-	<input type="radio" name="sex" value="female">W/o Pay<br>
-	<textarea>Your reason here...</textarea>
-	<br>
-	<button type="button">Cancel</button>
-	<button type="button">Submit</button>
-    </div>
-</div>
 
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h4 align="left">Leave Application Form</h4>
+        <hr>
+        <p><strong>Name:</strong> Maria Agwanta</p>
+        <p><strong>Date Created:</strong>10/15/2014</p>
+       
+        <br>    
+    <div class="row">
+    <div class="col-md-6">
+        <strong>From</strong>
+    </div>
+    <div class="col-md-6">
+        <strong>To</strong>
+    </div>
+    </div>
+        
+    <div class="row" align="center">
+    <div class="col-md-6">
+        <input type="date" placeholder="Date">
+    </div>
+    <div class="col-md-6">
+        <input type="date" placeholder="Date"><br>
+    </div>
+    </div>
+        <br><br>
+    
+    <div align="center">    
+         <label class="radio-inline">
+            <input type="radio" id="inlineRadio1"name="pay" value="option1"> With Pay
+         </label>
+         <label class="radio-inline">
+         <input type="radio" id="inlineRadio2" name="pay" value="option2"> Without Pay
+         </label>
+    </div>    
+      <br>
+        <strong>Reason</strong>         
+    <textarea class="form-control" rows="4"></textarea>
+    <br>
+    <div align="right">
+        <button class="btn btn-default" type="button">Cancel</button>
+	<button class="btn btn-default" type="button">Submit</button>
+    </div>    
+    </div>
+    <div class="col-md-4"></div>
+</div>

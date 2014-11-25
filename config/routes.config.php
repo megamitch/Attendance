@@ -50,19 +50,44 @@ return [
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
-                            'ob-trip' => [
+                            'dispute' => [
                                 'type' => 'Literal',
                                 'options' => [
-                                    'route' => '/ob',
+                                    'route' => '/dispute',
                                     'defaults' => [
-                                        'action'        => 'official-business'
+                                        'action'        => 'dispute'
                                     ]
                                 ]
-                            ]
+                            ],
+                            //
                         ]
                     ]
                 ]
-            ]
+            ],
+        
+        'leave' => [
+                'type'      => 'Literal',
+                'options'   => [
+                    'route'     => '/leave',
+                    'defaults'  => [
+                        'controller'    => 'MotAttendance\Controller\Attendance',
+                        'action'        => 'leave-form'
+                    ]
+                ]
+        ],
+        
+        'ob' => [
+                'type'      => 'Literal',
+                'options'   => [
+                    'route'     => '/ob',
+                    'defaults'  => [
+                        'controller'    => 'MotAttendance\Controller\Attendance',
+                        'action'        => 'official-business'
+                    ]
+                ]
+        ]    
+        
         ]
+        
     ]
 ];
