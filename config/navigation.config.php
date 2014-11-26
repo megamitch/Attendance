@@ -27,6 +27,17 @@
 
 return [
     'navigation' => [
-        
+        'default' => [
+            "attendance" => [
+                'label' => "Manage Attendance",
+                'route' => "mot/attendance",
+                'icon' => "fa fa-calendar"
+            ],
+//            "leave" => [
+//                'label' => "Leave",
+//                'route' => "mot/attendance/leave",
+//                'icon' => "fa fa-eye-slash"
+//            ]
+        ]
     ]
 ];
