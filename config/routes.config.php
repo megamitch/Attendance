@@ -39,7 +39,7 @@ return [
                 ],
                 'may_terminate' => true,
                 'child_routes' => [
-                    'mot-attendance' => [
+                    'attendance' => [
                         'type' => 'Segment',
                         'options' => [
                             'route' => '/attendance',
@@ -59,35 +59,30 @@ return [
                                     ]
                                 ]
                             ],
-                            //
-                        ]
-                    ]
+                            'leave' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/leave',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'leave-form'
+                                    ]
+                                ]
+                            ],
+                            'ob' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/ob',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'official-business'
+                                    ]
+                                ]
+                            ]
+                        ] //end of attendance child routes
+                    ] //end of Attendance
                 ]
-            ],
-        
-        'leave' => [
-                'type'      => 'Literal',
-                'options'   => [
-                    'route'     => '/leave',
-                    'defaults'  => [
-                        'controller'    => 'MotAttendance\Controller\Attendance',
-                        'action'        => 'leave-form'
-                    ]
-                ]
-        ],
-        
-        'ob' => [
-                'type'      => 'Literal',
-                'options'   => [
-                    'route'     => '/ob',
-                    'defaults'  => [
-                        'controller'    => 'MotAttendance\Controller\Attendance',
-                        'action'        => 'official-business'
-                    ]
-                ]
-        ]    
-        
-        ]
-        
+            ]
+        ]        
     ]
 ];
