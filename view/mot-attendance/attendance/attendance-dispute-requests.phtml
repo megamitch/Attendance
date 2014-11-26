@@ -1,0 +1,61 @@
+<!-- 
+/**
+* The MIT License
+*
+* Copyright (c) 2012-2014, contributors of Mega Mitch Credit, Inc. software project.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+* THE SOFTWARE.
+*/
+-->
+
+<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); ?>
+<div class="row">
+    <div class="col-md-1"></div>    
+    <div class="col-md-10">
+        <h2 align="left">Attendance</h2>
+        <table class="table table-striped">
+          <tr>
+            <th>Work Date</th>
+            <th>Day</th>		
+            <th>Type</th>
+            <th>In</th>
+            <th>Out</th>		
+            <th>Comment</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>10/14/2014</td>
+            <td>Tue</td>		
+            <td>Logged</td>
+            <td>08:38</td>		
+            <td>12:38</td>
+            <td></td>
+            <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dispute">
+                Accept
+              </button>
+                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#dispute">
+                Deny
+              </button>
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
