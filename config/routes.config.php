@@ -50,12 +50,12 @@ return [
                         ],
                         'may_terminate' => true,
                         'child_routes' => [
-                            'dispute' => [
+                            'disputerequest' => [
                                 'type' => 'Literal',
                                 'options' => [
-                                    'route' => '/dispute',
+                                    'route' => '/dispute/requests',
                                     'defaults' => [
-                                        'action'        => 'dispute'
+                                        'action'        => 'attendance-dispute-requests'
                                     ]
                                 ]
                             ],
