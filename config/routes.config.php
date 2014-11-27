@@ -24,6 +24,7 @@
  * THE SOFTWARE.
  */
 
+
 return [
     'console'   => [], //routing configuration for CLI modules
     'router'    => [
@@ -69,7 +70,7 @@ return [
                                     ]
                                 ]
                             ],
-                            'disputerequests' => [
+                            'summary-report' => [
                                 'type'      => 'Literal',
                                 'options'   => [
                                     'route'     => '/summary-report',

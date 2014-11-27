@@ -1,31 +1,79 @@
-<!-- 
-/**
-* The MIT License
-*
-* Copyright (c) 2012-2014, contributors of Mega Mitch Credit, Inc. software project.
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in
-* all copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-* THE SOFTWARE.
-*/
--->
-
 <?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); ?>
-<div class="row">    
+
+<div class="row">
+    
+    <div class="col-lg-6 col-md-6">
+        <div>
+            <select>
+                <option>Option1</option>
+                <option>Option2</option>
+                <option>Option3</option>
+            </select>
+            <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
+            <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
+        </div>
+        <br>
+        <table class="table table-responsive">
+            <div style="background-color:#D8D8D8" align="center">
+                <br>
+                <p align="right"><strong>Date: </strong>10/25/2014&nbsp;&nbsp;</p>
+                <strong>Summary Report</strong>
+                <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
+                <p>
+                    <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
+                </p>
+                <br>
+            </div>  
+            
+            <tr bgcolor="#F0F0F0 ">
+                <th>Work Date</th> 
+                <th>Day</th>
+                <th>Type</th>
+                <th colspan="2">Actual Time</th>
+                <th>Late In</th>
+                <th>Early Out</th>
+                <th>Brk Total</th>
+                <th>Remarks</th>
+            </tr>
+            <tr>
+                <td>10/14/2014</td>
+                <td>Tue</td>
+                <td>Logged</td>
+                <td>8:47</td>
+                <td>18:10</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>10/15/2014</td>
+                <td>Wed</td>
+                <td>Logged</td>
+                <td>9:04</td>
+                <td>11:57</td>
+                <td>4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr bgcolor="red">
+                <td><font color="white">10/16/2014</font></td>
+                <td><font color="white">Thu</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">-</font></td>
+                <td><font color="white">Holiday</font></td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-6 col-md-6">
+        <div class="row">    
    
     <div class="row">
          <div class="col-md-1"></div>    
@@ -125,4 +173,6 @@
       </div>
     </div>
   </div>
+</div>
+    </div>
 </div>
