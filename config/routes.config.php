@@ -69,6 +69,16 @@ return [
                                     ]
                                 ]
                             ],
+                            'summary-report' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/summary-report',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'attendance-summary-report'
+                                    ]
+                                ]
+                            ],
                             'ob' => [
                                 'type'      => 'Literal',
                                 'options'   => [

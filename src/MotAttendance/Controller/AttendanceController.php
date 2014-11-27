@@ -61,7 +61,7 @@ class AttendanceController extends AbstractActionController
         
     }
 
-    public function attendanceDisputeRequestsAction()
+    public function attendanceSummaryReportAction()
     {
         
     }
