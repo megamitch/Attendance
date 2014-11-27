@@ -69,4 +69,12 @@ class AttendanceController extends AbstractActionController
     {
         
     }
+    public function issAccessAction()
+    {
+        
+    }
+    public function assignedPersonnelAccessAction()
+    {
+        
+    }
     }

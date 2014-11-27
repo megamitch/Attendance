@@ -80,6 +80,26 @@ return [
                                     ]
                                 ]
                             ],
+                            'iss-access' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/iss-access',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'iss-access'
+                                    ]
+                                ]
+                            ],
+                            'assigned-personnel-access' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/assigned-personnel-access',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'assigned-personnel-access'
+                                    ]
+                                ]
+                            ],
                             'ob' => [
                                 'type'      => 'Literal',
                                 'options'   => [
