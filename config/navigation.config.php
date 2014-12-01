@@ -40,6 +40,16 @@ return [
                 'route' => "mot/attendance",
                 'icon' => "fa fa-calendar"
             ],
+            "ob" => [
+                'label' => "Official Business",
+                'route' => "mot/attendance/ob",
+                'icon' => "fa fa-briefcase"
+            ],
+            "leave" => [
+                'label' => "Leave",
+                'route' => "mot/attendance/leave",
+                'icon' => "fa fa-file-text"
+            ],
         ]
     ]
 ];
