@@ -99,6 +99,46 @@ return [
                                     ]
                                 ]
                             ],
+                            'early-ob' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/early-ob',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'early-ob'
+                                    ]
+                                ]
+                            ],
+                            'ob-status-monitoring' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/ob-status-monitoring',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'ob-status-monitoring'
+                                    ]
+                                ]
+                            ],
+                            'ob-approval' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/ob-approval',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'ob-approval'
+                                    ]
+                                ]
+                            ],
+                            'ob-report' => [
+                                'type'      => 'Literal',
+                                'options'   => [
+                                    'route'     => '/ob-report',
+                                    'defaults'  => [
+                                        'controller'    => 'MotAttendance\Controller\Attendance',
+                                        'action'        => 'ob-report'
+                                    ]
+                                ]
+                            ],
                             'ob' => [
                                 'type'      => 'Literal',
                                 'options'   => [

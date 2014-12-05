@@ -24,40 +24,15 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
-
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * \Attendance
+ *
+ * @package 
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
-{
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
-    {
-        $controller = new AttendanceController();
-        
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
-    }
+namespace MotAttendance\Model;
+
+use Zend\Db\TableGateway;
+
+class Attendance {
     
-    public function modelMustHaveKeys()
-    {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
-        
-        $expectation = "<tr><td>date</td></tr>";
-        
-        $controller->expects(
-                );
-    }
 }

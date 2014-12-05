@@ -1,22 +1,23 @@
 <?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); ?>
 
 <div class="row">
-    
-    <div class="col-lg-6 col-md-6 table-responsive">
-        <div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
             <select>
-                <option>Option1</option>
-                <option>Option2</option>
-                <option>Option3</option>
+                <?php echo $employee;?>
             </select>
             <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
             <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
         </div>
-        <br>
-        <table class="table">
+        <div class="col-lg-6 col-md-6"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <table class="table">
             <div style="background-color:#D8D8D8" align="center">
                 <br>
-                <p align="right"><strong>Date: </strong>10/25/2014&nbsp;&nbsp;</p>
+                <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
                 <strong>Summary Report</strong>
                 <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
                 <p>
@@ -71,12 +72,9 @@
                 <td><font color="white">Holiday</font></td>
             </tr>
         </table>
-    </div>
-    <div class="col-lg-6 col-md-6">
-        <div class="row">    
-   
-    <div class="row">
-         <div class="col-md-1"></div>    
+        </div>
+        <div class="col-lg-6 col-md-6">
+             <div class="col-md-1"></div>    
         <div class="col-md-10 table-responsive">
         <h2 align="left">Attendance Dispute Requests</h2>
         <table class="table ">
@@ -87,9 +85,7 @@
             <th>Dept.</th>
             <th>Branch</th>
             <th>Log Type</th>
-            <th>Reason</th>
-            <th>Effect</th>
-            <th>Action</th>
+           <th>Action</th>
            </tr>
           <tr>
             <td>Maria Aguanta</td>  
@@ -98,14 +94,9 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
-            <td></td>
             <td>
                 <a  data-toggle="modal" href="#dispute">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
-                </a>
-                <a  data-toggle="modal" href="#dispute">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
                 </a>
                     
             </td>
@@ -113,10 +104,13 @@
         </table>
     </div>
     <div class="col-md-1"></div>
+        </div>
     </div>
     
     <div class="row">
-         <div class="col-md-1"></div>    
+        <div class="col-lg-6 col-md-6"></div>
+        <div class="col-lg-6 col-md-6">
+            <div class="col-md-1"></div>    
         <div class="col-md-10 table-responsive">
         <h2 align="left">Dispute Request Completed</h2>
         <table class="table">
@@ -141,13 +135,12 @@
         </table>
     </div>
     <div class="col-md-1"></div>
+        </div>
     </div>
-   
-    
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="dispute" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="dispute" tabindex="-1" data-backdrop="static" data-keyboard="false" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -173,6 +166,4 @@
       </div>
     </div>
   </div>
-</div>
-    </div>
 </div>

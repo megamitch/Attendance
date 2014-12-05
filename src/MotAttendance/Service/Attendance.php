@@ -24,40 +24,54 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
+namespace MotAttendance\Service;
 
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * MotAttendance\Service\Attendance
+ *
+ * @package MotAttendance\Service
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
+class Attendance
 {
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
+    protected $employee;
+    protected $timestamp;
+    
+    
+    public function setEmployee(Employee $employee)
     {
-        $controller = new AttendanceController();
-        
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
+        $this->employee = $employee;
     }
     
-    public function modelMustHaveKeys()
+    public function getEmployee()
     {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
+        return $this->employee;
+    }
+    
+    public function setTimestamp(TimeStampService $time)
+    {
+        $this->timestamp = $time;
+    }
+    
+    public function getTimestamp()
+    {
+        return $this->timestamp;
+    }
+    
+    public function getAttendance($startDate, $endDate)
+    {
+        $employee = $this->getEmployee()->getId();    
+        $this->getTimestamp()->setEmployee($employee);
         
-        $expectation = "<tr><td>date</td></tr>";
+        $cutoff = $this->getTimestamp()
+                ->setStartDate($startDate)
+                ->setEndDate($endDate);
         
-        $controller->expects(
-                );
+        return $this->printDtr($cutoff->getTime());
+    }
+    
+    
+    protected function printDtr(TimeStamp $cutoff)
+    {
+        return new Dtr($cutoff);
     }
 }

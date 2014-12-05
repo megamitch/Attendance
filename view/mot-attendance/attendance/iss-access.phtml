@@ -1,22 +1,26 @@
-<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); ?>
 
 <div class="row">
-    
-    <div class="col-lg-6 col-md-6 table-responsive">
-        <div>
-            <select>
-                <option>Option1</option>
-                <option>Option2</option>
-                <option>Option3</option>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <select name="employee" onchange="showEmployeeRecords(this.value)">
+            <?php
+                echo $employee;
+            ?>
             </select>
             <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
             <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
+
         </div>
-        <br>
-        <table class="table">
+        <div class="col-lg-6 col-md-6"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div id="attendanceRecord" class="table-responsive"> 
+            <table class="table">
             <div style="background-color:#D8D8D8" align="center">
                 <br>
-                <p align="right"><strong>Date: </strong>10/25/2014&nbsp;&nbsp;</p>
+                <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
                 <strong>Summary Report</strong>
                 <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
                 <p>
@@ -71,7 +75,46 @@
                 <td><font color="white">Holiday</font></td>
             </tr>
         </table>
-        <div id="attendance-raw-data">
+        </div>
+        </div>
+        
+        <div class="col-lg-6 col-md-6">
+              <div class="col-md-1"></div>    
+        <div class="col-md-10 table-responsive">
+        <h2 align="left">Attendance Dispute Requests</h2>
+        <table class="table ">
+          <tr>
+            <th>Employee</th>
+            <th>Dispute Date</th>
+            <th>Date Created</th>		
+            <th>Dept.</th>
+            <th>Branch</th>
+            <th>Log Type</th>
+            <th>Action</th>
+           </tr>
+          <tr>
+            <td>Roda Roy Eluna</td>  
+            <td>10/14/2014</td>
+            <td>10/15/2014</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <a  data-toggle="modal" href="#dispute">
+                    <span class="glyphicon glyphicon-eye-open " aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
+                </a>
+  
+            </td>
+          </tr>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+          <div id="attendance-raw-data">
             <h3>Attendance Raw Data</h3>
             <table class="table">
                 <tr>
@@ -92,53 +135,10 @@
                     <td></td>
                 </tr>
             </table>
+        </div>  
         </div>
-    </div>
-    <div class="col-lg-6 col-md-6">
-        <div class="row">    
-   
-    <div class="row">
-         <div class="col-md-1"></div>    
-        <div class="col-md-10 table-responsive">
-        <h2 align="left">Attendance Dispute Requests</h2>
-        <table class="table ">
-          <tr>
-            <th>Employee</th>
-            <th>Dispute Date</th>
-            <th>Date Created</th>		
-            <th>Dept.</th>
-            <th>Branch</th>
-            <th>Log Type</th>
-            <th>Reason</th>
-            <th>Effect</th>
-            <th>Action</th>
-           </tr>
-          <tr>
-            <td>Maria Aguanta</td>  
-            <td>10/14/2014</td>
-            <td>10/15/2014</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <a  data-toggle="modal" href="#dispute">
-                    <span class="glyphicon glyphicon-ok" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
-                </a>
-                <a  data-toggle="modal" href="#dispute">
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </a>
-                    
-            </td>
-          </tr>
-        </table>
-    </div>
-    <div class="col-md-1"></div>
-    </div>
-    
-    <div class="row">
-         <div class="col-md-1"></div>    
+        <div class="col-lg-6 col-md-6">
+                <div class="col-md-1"></div>    
         <div class="col-md-10 table-responsive">
         <h2 align="left">Dispute Request Completed</h2>
         <table class="table " >
@@ -163,17 +163,18 @@
         </table>
     </div>
     <div class="col-md-1"></div>
+        </div>
     </div>
-    
-            <div class="row">
-                <div class="col-md-1"></div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6"></div>
+        <div class="col-lg-6 col-md-6">
+             <div class="col-md-1"></div>
                 <div class="col-md-10">
                     <button class="btn btn-primary">Complete</button>
                 </div>
                 <div class="col-md-1"></div>
-            </div>        
-   
-    
+        </div>
+    </div>
 </div>
 
 <!-- Modal -->
@@ -184,18 +185,23 @@
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel" align="left">Attendance Dispute Request Form</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" align="center">
        
-          <div class="row"> 
-              <div class="col-md-1"></div>
-              <div class="col-md-10" align="center">
-                  
-                    <p>You <strong>approved/denied</strong> the dispute request of Maria Agwanta.</p>
-                    <textarea rows="5" placeholder="Your comment here..."></textarea>
-                                      
+          <div class="row table-responsive"> 
+              <div>
+                  <table class="table table-bordered">
+                      <tr>
+                          <td align="center">Reason</td>
+                          <td align="center">Effect</td>
+                      </tr>
+                      <tr>
+                          <td>Brownout</td>
+                          <td></td>
+                      </tr>
+                  </table>
               </div>
-              <div class="col-md-1"></div>
           </div>
+          
       </div>    
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -238,4 +244,3 @@
   </div>
 </div>
     </div>
-</div>

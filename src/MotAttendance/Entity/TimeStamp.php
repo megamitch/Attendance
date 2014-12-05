@@ -24,40 +24,34 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
+namespace MotAttendance\Entity;
 
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * MotAttendance\Entity\TimeStamp
+ *
+ * @package MotAttendance\Entity
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
+class TimeStamp
 {
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
+    protected $cutoffdate;
+    protected $loggedTime;
+    
+    
+    public function setCutoffdate($start, $end)
     {
-        $controller = new AttendanceController();
-        
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
+        $this->cutoffdate = [
+            'start' => $start,
+            'end' => $end
+        ];
     }
     
-    public function modelMustHaveKeys()
+    public function setTimeLog(Array $time)
     {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
-        
-        $expectation = "<tr><td>date</td></tr>";
-        
-        $controller->expects(
-                );
+        $this->loggedTime = $time;
+    }
+    
+    public function getTime()
+    {
+        return $this->loggedTime;
     }
 }

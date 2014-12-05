@@ -24,40 +24,21 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
-
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * \AjaxController
+ *
+ * @package 
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
-{
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
-    {
-        $controller = new AttendanceController();
+namespace MotAttendance\Controller;      
+
+class AjaxController {
+    
+    public function ajaxAction(){
+        $this->_helper->layout->disableLayout();
+        $this->_helper->viewRenderer->setNoRender();
         
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
+        echo $this->_helper->getParam('paramname');
+        exit;
     }
     
-    public function modelMustHaveKeys()
-    {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
-        
-        $expectation = "<tr><td>date</td></tr>";
-        
-        $controller->expects(
-                );
-    }
 }
