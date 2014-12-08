@@ -1,13 +1,15 @@
+
 <div class="row">
    
     <div class=" col-lg-12 col-md-12 col-xs-12 table-responsive">
-        <table class="table table-bordered table-striped">
+        <table id="rowTable" class="table table-bordered table-condensed">
             <tr>
                 <th colspan="2" align="center">Destination</th>
                 <th rowspan="2" align="center">Purpose</th>
                 <th colspan="2" align="center">Expenses</th>
                 <th rowspan="2" align="center">Date</th>
                 <th rowspan="2" align="center">Time</th>
+                <th rowspan="2" align="center">Action</th>
             </tr>
             
             <tr>
@@ -24,14 +26,22 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td class="col-md-1">
+                    <button class="btn btn-default btn-mini" id="deleteRow"  type="button">
+                        <i class="fa fa-minus-circle"></i>
+                    </button>
+                    
+                </td>
             </tr>
         </table>
         
         <div align="right">
             <button class="btn btn-default" type="button">Submit</button>
-            <button class="btn btn-default" type="button">
+            <button class="btn btn-default" id="addRowEarly" value="Add Row" type="button">
                 <i class="fa fa-plus-circle"></i>
             </button>
         </div> 
     </div>
 </div>
+
+
