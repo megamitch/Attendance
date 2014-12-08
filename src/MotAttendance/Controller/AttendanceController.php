@@ -94,8 +94,24 @@ class AttendanceController extends AbstractActionController
     
     public function obStatusMonitoringAction()
     {
-      
+        $results=[['status'=>'denied','processed_by'=>'Jermaine Obial','comment'=>'No budget for OB Trip','type'=>'early OB',
+                    'date'=>'12/13/14','time'=>'10:30 AM','from'=>'Iligan','to'=>'BDO Iligan','purpose'=>'apply for atm card'],
+                  ['status'=>'approved','processed_by'=>'Jermaine Obial','comment'=>'valid reason','type'=>'early OB',
+                    'date'=>'12/15/14','time'=>'10:30 AM','from'=>'Iligan','to'=>'Pag-Ibig Iligan','purpose'=>'apply for loan'],
+                  ['status'=>'denied','processed_by'=>'Jermaine Obial','comment'=>'','type'=>'Regular OB',
+                    'date'=>'12/15/14','time'=>'10:30 AM','from'=>'','to'=>'','purpose'=>'']
+                ];
+        $data="";
+        if(empty($results)){
+            $data="<tr><td colspan=\"12\"align=\"center\"><font color=\"red\">No records found.</font></td></tr>";
+        }else{
+            foreach($results as $value){
+                $data.='<tr>'.$this->format($value).'</tr>';
+            }
+        }
+         return new ViewModel(["data" => $data]);
     }    
+   
     public function obApprovalAction()
     {
         $result=[['id'=>1,'name'=>'Roda Joy Eluna','branch'=>'Corp','dept'=>'HR','type'=>'early','date'=>'04/26/15','time'=>'9:00 AM',
