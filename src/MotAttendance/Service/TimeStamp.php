@@ -24,40 +24,38 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
+namespace MotAttendance\Service;
 
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * MotAttendance\TimeStamp
+ *
+ * @package MotAttendance
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
+class TimeStamp
 {
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
+    protected $startDate;
+    protected $endDate;
+
+    public function setStartDate($date)
     {
-        $controller = new AttendanceController();
-        
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
+        $this->startDate = $date;
     }
     
-    public function modelMustHaveKeys()
+    public function setEndDate($date)
     {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
+        $this->endDate = $date;
+    }
+    
+    
+    public function getTime()
+    {
+        $this->entity->setCutoffdate($this->startDate, $this->endDate);
+        $this->mapper->setEmployee($this->getEmployeeId());
         
-        $expectation = "<tr><td>date</td></tr>";
+        $result  = $this->mapper->getTimeLogged($this->startDate, $this->endDate);       
         
-        $controller->expects(
-                );
+        $this->entity->setTimeLog($result['time']);
+        
+        return $this->entity->getTime();
     }
 }

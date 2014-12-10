@@ -1,15 +1,15 @@
 
-<?php $this->inlineScript()->prependFile($this->basePath() . '/assets/mot-attendance/js/addrow.js');?>
-
 <div class="row">
-    <div class="col-lg-1 col-md-1"></div>
-    <div class=" col-lg-10 col-md-10 table-responsive">
-        <table id="rowTable" class="table table-bordered">
+   
+    <div class=" col-lg-12 col-md-12 col-xs-12 table-responsive">
+        <table id="rowTable" class="table table-bordered table-condensed">
             <tr>
                 <th colspan="2" align="center">Destination</th>
                 <th rowspan="2" align="center">Purpose</th>
                 <th colspan="2" align="center">Expenses</th>
-                <th rowspan="2">Action</th>
+                <th rowspan="2" align="center">Date</th>
+                <th rowspan="2" align="center">Time</th>
+                <th rowspan="2" align="center">Action</th>
             </tr>
             
             <tr>
@@ -24,8 +24,10 @@
                 <td></td>
                 <td></td>
                 <td></td>
+                <td></td>
+                <td></td>
                 <td class="col-md-1">
-                    <button class="btn btn-default btn-mini" id="deleteRow" value="Delete Row" type="button">
+                    <button class="btn btn-default btn-mini" id="deleteRow"  type="button">
                         <i class="fa fa-minus-circle"></i>
                     </button>
                     
@@ -35,11 +37,11 @@
         
         <div align="right">
             <button class="btn btn-default" type="button">Submit</button>
-            <button class="btn btn-default" id="addRowRegular" value="Add Row" type="button">
+            <button class="btn btn-default" id="addRowEarly" value="Add Row" type="button">
                 <i class="fa fa-plus-circle"></i>
             </button>
         </div> 
     </div>
-    <div class="col-lg-1 col-md-1"></div>
 </div>
+
 

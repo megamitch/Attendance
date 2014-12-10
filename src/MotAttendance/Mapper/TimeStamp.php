@@ -24,40 +24,30 @@
  * THE SOFTWARE.
  */
 
-namespace MotAttendanceTest;
-
-use MotAttendance\Controller\AttendanceController;
+namespace MotAttendance\Mapper;
 
 /**
- * MotAttendanceTest\AttendanceControllerTest
- * 
- * @package MotAttendanceTest
+ * MotAttendance\Mapper\TimeStamp
+ *
+ * @package MotAttendance\Mapper
  */
-class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
+class TimeStamp extends DataMapper
 {
-    /** 
-     * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
-     */
-    public function mustReturnExceptionIfThereAreMissingData()
-    {
-        $controller = new AttendanceController();
-        
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
-    }
+    protected $employee;
     
-    public function modelMustHaveKeys()
+    public function getTimeLogged($start, $end)
     {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
+        $sql = "SELECT * FROM cutofftime where start='{$start}' and end='{$end}' and employee_id ='{$this->getEmployeeId()}'";
         
-        $expectation = "<tr><td>date</td></tr>";
+        $result = [
+            'time' => [
+                '0' => ['date', 'day', 'in', 'out'],
+                '1' => ['date', 'day', 'in', 'out'],
+                '2' => ['date', 'day', 'in', 'out'],
+                '3' => ['date', 'day', 'in', 'out'],
+            ]
+        ];
         
-        $controller->expects(
-                );
+        return $this->fetchResult($sql);
     }
 }

@@ -27,17 +27,49 @@
 
 return [
     'navigation' => [
-        'default' => [
+        'sidebar' => [
+            "attendance" => [ 
+               'label' => "Manage Attendance",
+                'route' => "mot/attendance/summary-report",
+                'icon' => "fa fa-calendar"
+            ],
+            "ob-status-monitoring" => [
+                'label' => "OB Status Monitoring",
+                'route' => "mot/attendance/ob-status-monitoring",
+                'icon' => "fa fa-briefcase"
+            ],
+            "ob-approval" => [
+                'label' => "OB Approval",
+                'route' => "mot/attendance/ob-approval",
+                'icon' => "fa fa-briefcase"
+            ],
+            "ob-report" => [
+                'label' => "OB Report",
+                'route' => "mot/attendance/ob-report",
+                'icon' => "fa fa-briefcase"
+            ],
+        ],
+        'header' => [
             "attendance" => [
-                'label' => "Manage Attendance",
+                'label' => "Attendance",
                 'route' => "mot/attendance",
                 'icon' => "fa fa-calendar"
             ],
-//            "leave" => [
-//                'label' => "Leave",
-//                'route' => "mot/attendance/leave",
-//                'icon' => "fa fa-eye-slash"
-//            ]
+            "regular-ob" => [
+                'label' => "Regular OB",
+                'route' => "mot/attendance/ob",
+                'icon' => "fa fa-briefcase"
+            ],
+            "early-ob" => [
+                'label' => "Early OB",
+                'route' => "mot/attendance/early-ob",
+                'icon' => "fa fa-briefcase"
+            ],
+            "leave" => [
+                'label' => "Leave",
+                'route' => "mot/attendance/leave",
+                'icon' => "fa fa-file-text"
+            ],
         ]
     ]
 ];
