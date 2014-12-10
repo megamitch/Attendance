@@ -28,48 +28,67 @@
 return [
     'navigation' => [
         'sidebar' => [
-            "attendance" => [ 
-               'label' => "Manage Attendance",
-                'route' => "mot/attendance/summary-report",
-                'icon' => "fa fa-calendar"
-            ],
-            "ob-status-monitoring" => [
-                'label' => "OB Status Monitoring",
-                'route' => "mot/attendance/ob-status-monitoring",
-                'icon' => "fa fa-briefcase"
-            ],
-            "ob-approval" => [
-                'label' => "OB Approval",
-                'route' => "mot/attendance/ob-approval",
-                'icon' => "fa fa-briefcase"
-            ],
-            "ob-report" => [
-                'label' => "OB Report",
-                'route' => "mot/attendance/ob-report",
-                'icon' => "fa fa-briefcase"
-            ],
+            "attendance" => [
+                'label' => "Manage Attendance",
+                'route' => "#",
+                'icon' => "fa fa-calendar",
+                "pages" => [
+                    "summary-report" => [ 
+                        'label' => "Attendance Summary Report",
+                         'route' => "mot/attendance/summary-report",
+                         'icon' => "fa fa-calendar"
+                     ],
+                    "ob-status-monitoring" => [
+                        'label' => "OB Status Monitoring",
+                        'route' => "mot/attendance/ob-status-monitoring",
+                        'icon' => "fa fa-briefcase"
+                    ],
+                    "ob-approval" => [
+                        'label' => "OB Approval",
+                        'route' => "mot/attendance/ob-approval",
+                        'icon' => "fa fa-briefcase"
+                    ],
+                    "ob-report" => [
+                        'label' => "OB Report",
+                        'route' => "mot/attendance/ob-report",
+                        'icon' => "fa fa-briefcase"
+                    ],
+//                    "leave" => [
+//                        'label' => "Leave",
+//                        'route' => "mot/attendance/leave",
+//                        'icon' => "fa fa-calendar"
+//                    ]
+                ] //endofpages
+            ]
         ],
         'header' => [
-            "attendance" => [
-                'label' => "Attendance",
-                'route' => "mot/attendance",
-                'icon' => "fa fa-calendar"
-            ],
-            "regular-ob" => [
-                'label' => "Regular OB",
-                'route' => "mot/attendance/ob",
-                'icon' => "fa fa-briefcase"
-            ],
-            "early-ob" => [
-                'label' => "Early OB",
-                'route' => "mot/attendance/early-ob",
-                'icon' => "fa fa-briefcase"
-            ],
-            "leave" => [
-                'label' => "Leave",
-                'route' => "mot/attendance/leave",
-                'icon' => "fa fa-file-text"
-            ],
+            "attendance-request" => [
+                'label' => "Attendance Requests",
+                'route' => "#",
+                'icon' => "fa fa-calendar",
+                'pages' => [
+                    "attendance" => [
+                        'label' => "View Current DTR",
+                        'route' => "mot/attendance",
+                        'icon' => "fa fa-calendar"
+                    ],
+                    "regular-ob" => [
+                        'label' => "Regular OB",
+                        'route' => "mot/attendance/ob",
+                        'icon' => "fa fa-calendar"
+                    ],
+                    "early-ob" => [
+                        'label' => "Early OB",
+                        'route' => "mot/attendance/early-ob",
+                        'icon' => "fa fa-calendar"
+                    ],
+                    "leave" => [
+                        'label' => "Leave",
+                        'route' => "mot/attendance/leave",
+                        'icon' => "fa fa-calendar"
+                    ],
+                ]
+            ]            
         ]
     ]
 ];
