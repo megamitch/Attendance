@@ -338,11 +338,20 @@ class AttendanceController extends AbstractActionController
     }    
     public function getCurrentTimeLogs()
     {
-        $attendance = new \MotAttendance\Service\Attendance();
+//        $attendance = new \MotAttendance\Service\Attendance();
         $attendance->setEmployee($this->params('emplyoee_id'));
         
-        return new JsonModel($attendance->getAttendance($this->params('start_date'), $this->params('end_date')));
+        return new JsonModel($service->getAttendance($this->params('start_date'), $this->params('end_date')));
     }
     
+    
+    
+    private function getAttendanceForCurrentMonth()
+    {
+        $startDate = date();
+        $endDate = date();
+        
+        $service;
+    }
     
 }
