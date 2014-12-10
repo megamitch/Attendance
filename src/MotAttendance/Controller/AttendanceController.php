@@ -166,12 +166,7 @@ class AttendanceController extends AbstractActionController
         }
         return new ViewModel(["employee" => $employee_options]);
     }
-    
-    public function attendanceDisputeRequestsAction()
-    {
-        
-    }
-    
+     
     public function issAccessAction()
     {
         $result=[['first_name'=>'Maria','last_name'=>'Aguanta','emp_id'=>'01-0018','dept'=>'Credit Officer'],
@@ -228,6 +223,7 @@ class AttendanceController extends AbstractActionController
               <div class="col-lg-3 col-md-3"></div>
               <div class="col-lg-6 col-md-6" align="left">
                   <strong>Approval:</strong><br>
+                  <form method="post" action="">
                   <input class="input-sm" type="text" placeholder="Name"></input><br>
                   <textarea placeholder="Comment" rows="5" cols="19"></textarea>
               </div>
@@ -256,8 +252,8 @@ class AttendanceController extends AbstractActionController
                } 
             }
             $result.="<td>" .
-                        '<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#'.$id.'">
-                             Dispute
+                        '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
+                            <i class="fa fa-pencil-square-o"> Dispute</i>
                          </button>'
                         . "</td>";
             $result.=$this->createModal($id,$date);
@@ -303,7 +299,7 @@ class AttendanceController extends AbstractActionController
                         <strong>Dispute outcome/effect</strong>
                     </div>
                     </div>
-                    
+                    <form method="post" action="">
                     <div class="row" align="center">
                     <div class="col-md-6">
                         <textarea rows="4"></textarea>
@@ -312,7 +308,7 @@ class AttendanceController extends AbstractActionController
                         <textarea rows="4"></textarea><br>
                     </div>
                     </div>
-                    
+                    </form>
               </div>
               <div class="col-md-1"></div>
           </div>
