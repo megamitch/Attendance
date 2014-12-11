@@ -27,6 +27,9 @@
 
 return [
     'navigation' => [
+        'default' => [
+            
+        ],
         'sidebar' => [
             "attendance" => [
                 'label' => "Manage Attendance",
@@ -41,17 +44,17 @@ return [
                     "ob-status-monitoring" => [
                         'label' => "OB Status Monitoring",
                         'route' => "mot/attendance/ob-status-monitoring",
-                        'icon' => "fa fa-briefcase"
+                        'icon' => "fa fa-calendar"
                     ],
                     "ob-approval" => [
                         'label' => "OB Approval",
                         'route' => "mot/attendance/ob-approval",
-                        'icon' => "fa fa-briefcase"
+                        'icon' => "fa fa-calendar"
                     ],
                     "ob-report" => [
                         'label' => "OB Report",
                         'route' => "mot/attendance/ob-report",
-                        'icon' => "fa fa-briefcase"
+                        'icon' => "fa fa-calendar"
                     ],
 //                    "leave" => [
 //                        'label' => "Leave",
