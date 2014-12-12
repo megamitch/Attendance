@@ -27,12 +27,20 @@ $('#addRowEarly').click( function() {
 	var rowCount = table.rows.length;
 	var row = table.insertRow(rowCount);
 	
-	var element1 = "<td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td>\n\
-                        <td>\n\
-                         <button class=\"btn btn-default btn-mini\" id=\"deleteRow\" value=\"Delete Row\" type=\"button\">\n\
-                        <i class=\"fa fa-minus-circle\"></i>\n\
-                        </button>\n\
-                        </td>";
+	var element1 = "<tr>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"from[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"to[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"purpose[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"description[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"amount[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"date[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"time[]\" type=\"text\"></td>\n\
+                            <td class=\"col-md-1\">\n\
+                                <button class=\"remCF\"  type=\"button\">\n\
+                                    <i class=\"fa fa-minus-circle\"></i>\n\
+                                </button>\n\
+                        </td>\n\
+                        </tr>";
 	row.innerHTML = element1;
         
 }); 
@@ -42,15 +50,20 @@ $('#addRowRegular').click( function() {
 	var rowCount = table.rows.length;
 	var row = table.insertRow(rowCount);
 	
-	var element1 = "<td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td><td>New Row</td>\n\
-                        <td>\n\
-                        <button class=\"btn btn-default btn-mini\" id=\"deleteRow\" value=\"Delete Row\" type=\"button\">\n\
+	var element1 = "<td><input style=\"background-color: transparent;border: 0px solid;\" name=\"from[]\"type=\"text\"></td>\n\
+                        <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"to[]\"type=\"text\"></td>\n\
+                        <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"purpose[]\" type=\"text\"></td>\n\
+                        <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"description[]\" type=\"text\"></td>\n\
+                        <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"amount[]\"type=\"text\"></td>\n\
+                        <td class=\"col-md-1\">\n\
+                            <button class=\"remCF\"  value=\"Delete Row\" type=\"button\">\n\
                         <i class=\"fa fa-minus-circle\"></i>\n\
-                        </button>\n\
-                        </td>";
+                        </button> \n\
+                </td>";
 	row.innerHTML = element1;
         
 }); 
+/**
 $('#deleteRow').click( function() {		
 		var tableID = "rowTable";
 		var table = document.getElementById(tableID);
@@ -61,3 +74,14 @@ $('#deleteRow').click( function() {
 			table.deleteRow(rowCount);
 		}			
 });
+*/
+
+$("#rowTable").on('click','.remCF',function(){
+        var tableID = "rowTable";
+	var table = document.getElementById(tableID);
+	var rowCount = table.rows.length;
+	console.log(rowCount);
+	if(rowCount !== 3) {
+        $(this).parent().parent().remove().remove().remove().remove().remove();
+                }
+    });
