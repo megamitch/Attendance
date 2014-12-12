@@ -44,9 +44,9 @@ class AttendanceController extends AbstractActionController
 
         $results = [
             'dtr' => [['id'=>1,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'9:00 AM','out'=>'12:00 PM','comment'=>''],
-                      ['id'=>2,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'1:00 PM','out'=>'','comment'=>''],
-                      ['id'=>3,'date' => '10/14/2014', 'day' => 'tue','type' => 'Break','in'=>'','out'=>'3:20 PM','comment'=>''],
-                      ['id'=>4,'date' => '10/15/2014', 'day' => 'wed','type' => '','in'=>'','out'=>'','comment'=>''],
+                      ['id'=>2,'date' => '10/15/2014', 'day' => 'wed','type' => '','in'=>'','out'=>'','comment'=>''],
+                      ['id'=>3,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'1:00 PM','out'=>'','comment'=>''],
+                      ['id'=>4,'date' => '10/14/2014', 'day' => 'tue','type' => 'Break','in'=>'','out'=>'3:20 PM','comment'=>''], 
                       ['id'=>5,'date' => '10/19/2014', 'day' => 'sun','type' => '','in'=>'','out'=>'','comment'=>'']  
                      ]
                      ];
@@ -346,7 +346,7 @@ class AttendanceController extends AbstractActionController
         $result="";
         foreach ($data as $value){
             if(!$value){
-                $result.="<td bgcolor=\"red\"><font color=\"white\">*</font></td>";
+                $result.="<td class=\"danger\">-</td>";
             }else{
                 $result.="<td>".$value."</td>";
             }

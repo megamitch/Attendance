@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-1 col-md-1"></div>
     <div class=" col-lg-10 col-md-10 table-responsive">
-        <table id="rowTable" class="table table-bordered">
+        <table id="rowTable" class="table table-bordered table-condensed">
             <tr>
                 <th colspan="2" align="center">Destination</th>
                 <th rowspan="2" align="center">Purpose</th>
@@ -19,13 +19,13 @@
                 <td>Amount</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><input style="background-color: transparent;border: 0px solid;" name="from[]"type="text"></td>
+                <td><input style="background-color: transparent;border: 0px solid;" name="to[]"type="text"></td>
+                <td><input style="background-color: transparent;border: 0px solid;" name="purpose[]" type="text"></td>
+                <td><input style="background-color: transparent;border: 0px solid;" name="description[]" type="text"></td>
+                <td><input style="background-color: transparent;border: 0px solid;" name="amount[]"type="text"></td>
                 <td class="col-md-1">
-                    <button class="btn btn-default btn-mini" id="deleteRow" value="Delete Row" type="button">
+                    <button class="remCF" id="deleteRow" value="Delete Row" type="button">
                         <i class="fa fa-minus-circle"></i>
                     </button>
                     
