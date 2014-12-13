@@ -111,6 +111,7 @@ class AttendanceController extends AbstractActionController
                 $data.='<tr>'.$this->format($value).'</tr>';
             }
         }
+              
          return new ViewModel(["data" => $data]);
     }    
    
