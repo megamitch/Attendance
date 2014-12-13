@@ -34,5 +34,31 @@ namespace MotAttendance\Model;
 use Zend\Db\TableGateway;
 
 class Attendance {
+    protected $tableGateway;
     
+    public function __construct(TableGateway $tableGateway)
+     {
+         $this->tableGateway = $tableGateway;
+     }
+     
+     public function fetchAll(){
+         $resultSet=$this->tableGateway->select();
+         return $resultSet;
+     }
+     
+     public function dispute($id,$reason,$effect){
+         $data=['id'=>$id,
+                'reason'=>$reason,
+                'effect'=>$effect
+                ];
+         $this->tableGateway->insert($data);
+     }
+     
+     public function updateAttendance($id,$columnName,$timeValue){
+        
+         $this->tableGateway->update(["'".$columnName."'"=>$timeValue],['id'=>$id]);
+     }
+     
+     
+     
 }
