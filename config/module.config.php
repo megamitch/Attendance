@@ -25,7 +25,7 @@
  */
 
 return [
-    'translator'    => [
+   'translator'    => [
         'local' => 'en_US',
         'translator_file_patterns' => [
             // accepts multiple configuration
@@ -53,4 +53,5 @@ return [
     'module_layouts' => [
         'MotAttendance' => 'mot-layout/layout'
     ]
+    
 ];

@@ -44,8 +44,10 @@ class AttendanceController extends AbstractActionController
 
         $results = [
             'dtr' => [['id'=>1,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'9:00 AM','out'=>'12:00 PM','comment'=>''],
-                      ['id'=>2,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'1:00 PM','out'=>'','comment'=>''],
-                      ['id'=>3,'date' => '10/14/2014', 'day' => 'tue','type' => 'Break','in'=>'','out'=>'3:20 PM','comment'=>''],
+                      ['id'=>2,'date' => '10/15/2014', 'day' => 'wed','type' => '','in'=>'','out'=>'','comment'=>''],
+                      ['id'=>3,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'1:00 PM','out'=>'','comment'=>''],
+                      ['id'=>4,'date' => '10/14/2014', 'day' => 'tue','type' => 'Break','in'=>'','out'=>'3:20 PM','comment'=>''], 
+                      ['id'=>5,'date' => '10/19/2014', 'day' => 'sun','type' => '','in'=>'','out'=>'','comment'=>'']  
                      ]
                      ];
    
@@ -109,6 +111,7 @@ class AttendanceController extends AbstractActionController
                 $data.='<tr>'.$this->format($value).'</tr>';
             }
         }
+              
          return new ViewModel(["data" => $data]);
     }    
    
@@ -166,12 +169,7 @@ class AttendanceController extends AbstractActionController
         }
         return new ViewModel(["employee" => $employee_options]);
     }
-    
-    public function attendanceDisputeRequestsAction()
-    {
-        
-    }
-    
+     
     public function issAccessAction()
     {
         $result=[['first_name'=>'Maria','last_name'=>'Aguanta','emp_id'=>'01-0018','dept'=>'Credit Officer'],
@@ -228,6 +226,7 @@ class AttendanceController extends AbstractActionController
               <div class="col-lg-3 col-md-3"></div>
               <div class="col-lg-6 col-md-6" align="left">
                   <strong>Approval:</strong><br>
+                  <form method="post" action="">
                   <input class="input-sm" type="text" placeholder="Name"></input><br>
                   <textarea placeholder="Comment" rows="5" cols="19"></textarea>
               </div>
@@ -245,24 +244,43 @@ class AttendanceController extends AbstractActionController
     }
     private function setColorScheme($id,$date,$day,$type,$in,$out,$comment)
     {
-        $record=[$date,$day,$type,$in,$out,$comment];    
+        $record=[$date,$day,$type,$in,$out];    
         $result="";    
         foreach($record as $data){
             
                if(empty($data)){
-                   $result.="<td><font color='red'>*</font></td>";
+                   $result.="<td class='danger'><font color='red'>-</font></td>";
                }else{
                    $result.="<td>".$data."</td>";
                } 
             }
-            $result.="<td>" .
-                        '<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#'.$id.'">
-                             Dispute
+            if($day=="sun"){
+                $comment="holiday";
+                
+                $result.="<td>".$comment."</td><td></td>";
+                $result="<tr class=\"danger\">".$result."</tr>"; 
+            }else if($type==""){
+                $comment="absent";
+            
+                $result.="<td>".$comment."</td><td>" .
+                        '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
+                            <i class="fa fa-pencil-square-o"> Dispute</i>
                          </button>'
                         . "</td>";
-            $result.=$this->createModal($id,$date);
+                $result.=$this->createModal($id,$date);
+                 $result="<tr class=\"danger\">".$result."</tr>";
+            }else{
+                $result.="<td>".$comment."</td><td>" .
+                        '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
+                            <i class="fa fa-pencil-square-o"> Dispute</i>
+                         </button>'
+                        . "</td>";
+                $result.=$this->createModal($id,$date);
+                $result="<tr>".$result."</tr>";
+            }
+            
                     
-        return "<tr>".$result."</tr>"; 
+        return $result; 
     }
     private function createOption($first_name,$last_name,$emp_id){
         $result="";
@@ -303,7 +321,7 @@ class AttendanceController extends AbstractActionController
                         <strong>Dispute outcome/effect</strong>
                     </div>
                     </div>
-                    
+                    <form method="post" action="">
                     <div class="row" align="center">
                     <div class="col-md-6">
                         <textarea rows="4"></textarea>
@@ -312,7 +330,7 @@ class AttendanceController extends AbstractActionController
                         <textarea rows="4"></textarea><br>
                     </div>
                     </div>
-                    
+                    </form>
               </div>
               <div class="col-md-1"></div>
           </div>
@@ -329,7 +347,7 @@ class AttendanceController extends AbstractActionController
         $result="";
         foreach ($data as $value){
             if(!$value){
-                $result.="<td bgcolor=\"red\"><font color=\"white\">*</font></td>";
+                $result.="<td class=\"danger\">-</td>";
             }else{
                 $result.="<td>".$value."</td>";
             }
