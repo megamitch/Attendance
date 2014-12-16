@@ -32,6 +32,7 @@
 namespace MotAttendance\Model;
 
 use Zend\Db\TableGateway;
+use Zend\Db\Sql\Sql;
 
 class Attendance {
     protected $tableGateway;
