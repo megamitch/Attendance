@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The MIT License
  *
@@ -27,57 +28,54 @@
  *
  * @package 
  */
+
 namespace MotAttendance\Model;
 
-use Zend\Db\TableGateway;
-use Zend\Db\Adapter\Adapter;
-
+use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Select;
 
 class Attendance {
 
     protected $tableGateway;
     protected $adapter;
-    
-    public function __construct(TableGateway $tableGateway)
-     {
-         $this->tableGateway = $tableGateway;
-         $this->adapter=new Zend\Db\Adapter\Adapter([
-                'driver'=>'Mysql',
-                'database'=>'mmci_attendance',
-                'username'=>'root',
-                'password'=>'Megamitch123!!'
-            ]);
-     }
-     
-     public function fetchAll(){
-         $resultSet=$this->tableGateway->select();
-         return $resultSet;
-         //query from timeclock_schedule and employee_time_log??s??
-     }
-     
-     public function fetchAllOb()
-     {
-      //insert query for OB   
-     } 
-     
-     public function dispute($id,$reason,$effect){
-         $data=['id'=>$id,
-                'reason'=>$reason,
-                'effect'=>$effect
-                ];
-         $this->tableGateway->insert($data);
-         
-     //no table for dispute application???
-     }
-     
-     public function updateAttendance($id,$columnName,$timeValue){
+
+    public function __construct(TableGateway $tableGateway) {
+        $this->tableGateway = $tableGateway;
         
-         $this->tableGateway->update(["'".$columnName."'"=>$timeValue],['id'=>$id]);
-         
-    //update table timeclock_schedule/employee_time_logs?????
-         
-     }
-     
-     
-     
+//         $this->adapter=new Zend\Db\Adapter\Adapter([
+//                'driver'=>'Mysql',
+//                'database'=>'mmci_attendance',
+//                'username'=>'root',
+//                'password'=>'Megamitch123!!'
+//            ]);
+    }
+
+    public function fetchAll() {
+//         var_dump($this->tableGateway->getAdapter()->getDriver()->getConnection()->isConnected()); exit;
+        $resultSet = $this->tableGateway->select();
+        return $resultSet;
+        //query from timeclock_schedule and employee_time_log??s??
+    }
+
+    public function fetchAllOb() {
+        //insert query for OB   
+    }
+
+    public function dispute($id, $reason, $effect) {
+        $data = ['id' => $id,
+                 'reason' => $reason,
+                 'effect' => $effect
+        ];
+        $this->tableGateway->insert($data);
+
+        //no table for dispute application???
+    }
+
+    public function updateAttendance($id, $columnName, $timeValue) {
+
+        $this->tableGateway->update(["'" . $columnName . "'" => $timeValue], ['id' => $id]);
+
+        //update table timeclock_schedule/employee_time_logs?????
+    }
+
 }

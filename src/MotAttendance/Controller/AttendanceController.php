@@ -29,6 +29,9 @@ namespace MotAttendance\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\Db\TableGateway\TableGateway;
+use MotAttendance\Model\Attendance;
+use Zend\Db\ResultSet\ResultSet;
 
 /**
  * MotAttendance\Controller\AttendanceController
@@ -37,9 +40,12 @@ use Zend\View\Model\JsonModel;
  */
 class AttendanceController extends AbstractActionController
 {
-    
+    private $attendanceTable;
+  
     public function indexAction()
     {
+       // $this->getEmployeTimeLogTable()->select();
+       /** $attendance=new attendance();
         $view = "";
 
         $results = [
@@ -61,9 +67,11 @@ class AttendanceController extends AbstractActionController
                                                 $record['in'],$record['out'],$record['comment']);
                  
             }
-        }
+        }*/
         
-        return new ViewModel(["data" => $view]);
+      //  return new ViewModel(["data" => $view]);
+    
+        return new ViewModel(['recordSet'=>$this->getEmployeTimeLogTable()]);
     }
     
     public function officialBusinessAction()
@@ -72,7 +80,7 @@ class AttendanceController extends AbstractActionController
     }
      public function earlyObAction()
     {
-      
+    
     } 
      public function obReportAction()
     {
@@ -140,6 +148,7 @@ class AttendanceController extends AbstractActionController
         }
         return new ViewModel(["data" => $data]);
     }
+    
     public function leaveFormAction()
     {
         
@@ -372,4 +381,28 @@ class AttendanceController extends AbstractActionController
         $service;
     }
     
+    public function getEmployeTimeLogTable()
+    {
+//        $adapter = $this->getServiceLocator()->get('mmci_attendance_db');
+//        var_dump($adapter->getDriver()->getConnection()->isConnected()); exit;
+//        var_dump(get_class_methods($adapter->getDriver())); exit;
+        
+//        return $adapter->createStatement("Select * from employee_time_log")->execute();
+        
+//        if(!$this->attendanceTable){
+//            
+//        }
+//        
+        $this->attendanceTable=new TableGateway(
+                'employee_time_log',
+                $this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'),
+                null,
+                new ResultSet()
+        );
+//       var_dump(get_class_methods($this->attendanceTable)); exit;
+
+        $attendance = new Attendance($this->attendanceTable);
+        
+        return $attendance->fetchAll();
+    }
 }

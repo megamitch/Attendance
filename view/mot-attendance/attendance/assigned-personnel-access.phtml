@@ -1,124 +1,143 @@
 <?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); ?>
-
-<div class="row">
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-             <select>
-            <?php echo $branch;?>
-        </select>
-        <select>
-            <option>Employee 1</option>
-            <option>Employee 2</option>
-            <option>Employee 3</option>
-        </select>
-        <select>
-            <option>Month/Year</option>
-            <option>Month/Year</option>
-            <option>Month/Year</option>
-        </select>
-        &nbsp;&nbsp;<button class="btn btn-default">View</button>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-6 col-md-6 table-responsive">
-             <h4>Employee Attendance Data</h4>
-            <table class="table">
-                <tr>
-                    <th>Employee</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Date/Time</th>
-                    <th>Checking</th>
-                </tr>
-                <tr>
-                    <td>Alyssa Charm Manugos</td>
-                    <td>CO</td>
-                    <td>Completed</td>
-                    <td>10-28-2014/10:30 AM</td>
-                    <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
-                </tr>
-                <tr>
-                    <td>Jhossana De Gracia</td>
-                    <td>CO</td>
-                    <td>INC</td>
-                    <td></td>
-                    <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
-                </tr>
-            </table>
-             
-             <div class="row">
-            <div class="col-md-6">
-                <button class="btn btn-primary">Completed</button>
-            </div>
-            <div class="col-md-6" align="right">
-                <p>
-                    <strong>Date:</strong> 10/24/2014<br>
-                    <strong>Time:</strong> 1:00 PM
-                </p>
-            </div>
-        </div>
-        </div>
-        <div class="col-lg-6 col-md-6 table-responsive">
-            <br>
-            <table class="table">
-            <div style="background-color:#D8D8D8" align="center">
-                <br>
-                <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
-                <strong>Summary Report</strong>
-                <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
-                <p>
-                    <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
-                </p>
-                <br>
-            </div>  
-            
-            <tr bgcolor="#F0F0F0 ">
-                <th>Work Date</th> 
-                <th>Day</th>
-                <th>Type</th>
-                <th colspan="2">Actual Time</th>
-                <th>Late In</th>
-                <th>Early Out</th>
-                <th>Brk Total</th>
-                <th>Remarks</th>
-            </tr>
-            <tr>
-                <td>10/14/2014</td>
-                <td>Tue</td>
-                <td>Logged</td>
-                <td>8:47</td>
-                <td>18:10</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10/15/2014</td>
-                <td>Wed</td>
-                <td>Logged</td>
-                <td>9:04</td>
-                <td>11:57</td>
-                <td>4</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-                   <tr class="danger">
-                <td>10/16/2014</td>
-                <td>Thu</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>Holiday</td>
-            </tr>
-        </table>
-        </div>
-    </div>
+<div class="pageheader">
+     <div class="media">
+         <div class="pageicon pull-left">
+             <i class="fa fa-calendar"></i>
+         </div>
+         <div class="media-body" style="padding-left: 5px">
+             <ul class="breadcrumb">
+                 <li>
+                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                 </li>
+                 <li><a href="#">Attendance</a></li>
+                 <li>Personnel Access</li>
+             </ul>
+             <h4>Assigned Personnel Access</h4>
+         </div>
+     </div>
 </div>
+<div class="contentpanel">
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                     <select>
+                    <?php echo $branch;?>
+                </select>
+                <select>
+                    <option>Employee 1</option>
+                    <option>Employee 2</option>
+                    <option>Employee 3</option>
+                </select>
+                <select>
+                    <option>Month/Year</option>
+                    <option>Month/Year</option>
+                    <option>Month/Year</option>
+                </select>
+                &nbsp;&nbsp;<button class="btn btn-default">View</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 table-responsive">
+                     <h4>Employee Attendance Data</h4>
+                    <table class="table">
+                        <tr>
+                            <th>Employee</th>
+                            <th>Title</th>
+                            <th>Status</th>
+                            <th>Date/Time</th>
+                            <th>Checking</th>
+                        </tr>
+                        <tr>
+                            <td>Alyssa Charm Manugos</td>
+                            <td>CO</td>
+                            <td>Completed</td>
+                            <td>10-28-2014/10:30 AM</td>
+                            <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
+                        </tr>
+                        <tr>
+                            <td>Jhossana De Gracia</td>
+                            <td>CO</td>
+                            <td>INC</td>
+                            <td></td>
+                            <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
+                        </tr>
+                    </table>
+
+                     <div class="row">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary">Completed</button>
+                    </div>
+                    <div class="col-md-6" align="right">
+                        <p>
+                            <strong>Date:</strong> 10/24/2014<br>
+                            <strong>Time:</strong> 1:00 PM
+                        </p>
+                    </div>
+                </div>
+                </div>
+                <div class="col-lg-6 col-md-6 table-responsive">
+                    <br>
+                    <table class="table">
+                    <div style="background-color:#D8D8D8" align="center">
+                        <br>
+                        <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
+                        <strong>Summary Report</strong>
+                        <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
+                        <p>
+                            <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
+                        </p>
+                        <br>
+                    </div>  
+
+                    <tr bgcolor="#F0F0F0 ">
+                        <th>Work Date</th> 
+                        <th>Day</th>
+                        <th>Type</th>
+                        <th colspan="2">Actual Time</th>
+                        <th>Late In</th>
+                        <th>Early Out</th>
+                        <th>Brk Total</th>
+                        <th>Remarks</th>
+                    </tr>
+                    <tr>
+                        <td>10/14/2014</td>
+                        <td>Tue</td>
+                        <td>Logged</td>
+                        <td>8:47</td>
+                        <td>18:10</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>10/15/2014</td>
+                        <td>Wed</td>
+                        <td>Logged</td>
+                        <td>9:04</td>
+                        <td>11:57</td>
+                        <td>4</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                           <tr class="danger">
+                        <td>10/16/2014</td>
+                        <td>Thu</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>Holiday</td>
+                    </tr>
+                </table>
+                </div>
+            </div>
+        </div>
+
+</div>    

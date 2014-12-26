@@ -1,47 +1,65 @@
 <?php 
     $this->inlineScript()->prependFile($this->basePath() . '/assets/mot-attendance/js/addrow.js');
 ?>
+<div class="pageheader">
+     <div class="media">
+         <div class="pageicon pull-left">
+             <i class="fa fa-line-chart"></i>
+         </div>
+         <div class="media-body" style="padding-left: 5px">
+             <ul class="breadcrumb">
+                 <li>
+                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                 </li>
+                 <li><a href="#">Official Business</a></li>
+                 <li>Approval</li>
+             </ul>
+             <h4>OB Approval</h4>
+         </div>
+     </div>
+</div>
+<div class="contentpanel">
+        <div>
+        <div class="row">
+        <select>
+            <option>Branch</option>
+        </select>
+        <select>
+            <option>Employee</option>
+        </select>
 
-<div>
-    <div class="row">
-    <select>
-        <option>Branch</option>
-    </select>
-    <select>
-        <option>Employee</option>
-    </select>
-    
-    &nbsp;From <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
-    &nbsp;To <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
-    &nbsp;<button class="btn">View</button>
-    </div>
-    <br>
-    <div class="table-responsive">
-        <table class="table table-bordered">
-            <tr>
-                <th rowspan="2">Date</th>
-                <th rowspan="2">Status</th>
-                <th rowspan="2">Processed by</th>
-                <th rowspan="2">Comment</th>
-                <th rowspan="2">Type</th>
-                <th rowspan="2">Date Requested</th>
-                <th rowspan="2">Time Requested</th>
-                <th colspan="2">Destination</th>
-                <th rowspan="2">Purpose</th>
-                <th colspan="2">Expenses</th>
-                <th colspan="2">OB Timestamp</th>
-            </tr>
-            <tr>
-                <td>From</td>
-                <td>To</td>
-                <td>Description</td>
-                <td>Amount</td>
-                <td>OB out</td>
-                <td>OB in</td>
-            </tr>
-            <tr>
-                <?php echo $data;?>
-            </tr>
-        </table>
+        &nbsp;From <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
+        &nbsp;To <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
+        &nbsp;<button class="btn">View</button>
+        </div>
+        <br>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th rowspan="2">Date</th>
+                    <th rowspan="2">Status</th>
+                    <th rowspan="2">Processed by</th>
+                    <th rowspan="2">Comment</th>
+                    <th rowspan="2">Type</th>
+                    <th rowspan="2">Date Requested</th>
+                    <th rowspan="2">Time Requested</th>
+                    <th colspan="2">Destination</th>
+                    <th rowspan="2">Purpose</th>
+                    <th colspan="2">Expenses</th>
+                    <th colspan="2">OB Timestamp</th>
+                </tr>
+                <tr>
+                    <td>From</td>
+                    <td>To</td>
+                    <td>Description</td>
+                    <td>Amount</td>
+                    <td>OB out</td>
+                    <td>OB in</td>
+                </tr>
+                <tr>
+                    <?php echo $data;?>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
