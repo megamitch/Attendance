@@ -52,6 +52,12 @@ return [
     ],
     'module_layouts' => [
         'MotAttendance' => 'mot-layout/layout'
+    ],
+    'service_manager'=>[
+        'abstract_factories'=>[
+    //        'MotAttendance\src\MotAttendance\Model\AttendanceTable',
+        ]
     ]
     
-];
+    
+]; 

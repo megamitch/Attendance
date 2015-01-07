@@ -1,139 +1,182 @@
-<div class="row">
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <select>
-                <?php echo $employee;?>
-            </select>
-            <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
-            <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
-            &nbsp;&nbsp;<button class="btn btn-default">View</button>
-        </div>
-        <div class="col-lg-6 col-md-6"></div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-lg-6 col-md-6">
-            <table class="table">
-            <div style="background-color:#D8D8D8" align="center">
-                <br>
-                <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
-                <strong>Summary Report</strong>
-                <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
-                <p>
-                    <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
-                </p>
-                <br>
-            </div>  
-            
-            <tr bgcolor="#F0F0F0 ">
-                <th>Work Date</th> 
-                <th>Day</th>
-                <th>Type</th>
-                <th colspan="2">Actual Time</th>
-                <th>Late In</th>
-                <th>Early Out</th>
-                <th>Brk Total</th>
-                <th>Remarks</th>
-            </tr>
-            <tr>
-                <td>10/14/2014</td>
-                <td>Tue</td>
-                <td>Logged</td>
-                <td>8:47</td>
-                <td>18:10</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>10/15/2014</td>
-                <td>Wed</td>
-                <td>Logged</td>
-                <td>9:04</td>
-                <td>11:57</td>
-                <td>4</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr class="danger">
-                <td>10/16/2014</td>
-                <td>Thu</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>-</td>
-                <td>Holiday</td>
-            </tr>
-        </table>
-        </div>
-        <div class="col-lg-6 col-md-6">
-             <div class="col-md-1"></div>    
-        <div class="col-md-10 table-responsive">
-        <h2 align="left">Attendance Dispute Requests</h2>
-        <table class="table ">
-          <tr>
-            <th>Employee</th>
-            <th>Dispute Date</th>
-            <th>Date Created</th>		
-            <th>Dept.</th>
-            <th>Branch</th>
-            <th>Log Type</th>
-           <th>Action</th>
-           </tr>
-          <tr>
-            <td>Maria Aguanta</td>  
-            <td>10/14/2014</td>
-            <td>10/15/2014</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <a  data-toggle="modal" href="#dispute">
-                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
-                </a>
-                    
-            </td>
-          </tr>
-        </table>
-    </div>
-    <div class="col-md-1"></div>
-        </div>
-    </div>
+
+<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); 
+$this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/jquery-ui.min.css');
     
+    
+    $this->inlineScript()
+            ->prependFile($this->basePath('assets/mot-reports/js/datatable.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
+            ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
+            ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
+    
+    $this->inlineScript()->captureStart();
+    echo '
+        $(function() {
+            $( "#accordion" ).accordion();
+        }); 
+        ';
+    $this->inlineScript()->captureEnd();
+?>
+<div class="pageheader">
+     <div class="media">
+         <div class="pageicon pull-left">
+             <i class="fa fa-calendar"></i>
+         </div>
+         <div class="media-body" style="padding-left: 5px">
+             <ul class="breadcrumb">
+                 <li>
+                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                 </li>
+                 <li><a href="#">Attendance</a></li>
+                 <li>Summary Report</li>
+             </ul>
+             <h4>Attendance Summary Report</h4>
+         </div>
+     </div>
+</div>
+<div class="contentpanel">
     <div class="row">
-        <div class="col-lg-6 col-md-6"></div>
-        <div class="col-lg-6 col-md-6">
-            <div class="col-md-1"></div>    
-        <div class="col-md-10 table-responsive">
-        <h2 align="left">Dispute Request Completed</h2>
-        <table class="table">
-          <tr>
-            <th>Employee</th>
-            <th>Dispute Date</th>
-            <th>Date Created</th>		
-            <th>Branch</th>
-            <th>Status</th>
-            <th>By</th>
-            <th>Comment</th>
-          </tr>
-          <tr>
-            <td>Pedro Batonghinog</td>  
-            <td>10/14/2014</td>
-            <td>10/15/2014</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </table>
-    </div>
-    <div class="col-md-1"></div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <select>
+                    <?php echo $employee;?>
+                </select>
+                <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
+                <input type="date">&nbsp;&nbsp;<i class="fa fa-calendar fa-2x"></i>
+                &nbsp;&nbsp;<button class="btn btn-default">View</button>
+            </div>
+            <div class="col-lg-6 col-md-6"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <table class="table">
+                <div style="background-color:#D8D8D8" align="center">
+                    <br>
+                    <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
+                    <strong>Summary Report</strong>
+                    <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
+                    <p>
+                        <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
+                    </p>
+                    <br>
+                </div>  
+
+                <tr bgcolor="#F0F0F0 ">
+                    <th>Work Date</th> 
+                    <th>Day</th>
+                    <th>Type</th>
+                    <th colspan="2">Actual Time</th>
+                    <th>Late In</th>
+                    <th>Early Out</th>
+                    <th>Brk Total</th>
+                    <th>Remarks</th>
+                </tr>
+                <tr>
+                    <td>10/14/2014</td>
+                    <td>Tue</td>
+                    <td>Logged</td>
+                    <td>8:47</td>
+                    <td>18:10</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>10/15/2014</td>
+                    <td>Wed</td>
+                    <td>Logged</td>
+                    <td>9:04</td>
+                    <td>11:57</td>
+                    <td>4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr class="danger">
+                    <td>10/16/2014</td>
+                    <td>Thu</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>Holiday</td>
+                </tr>
+            </table>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                 <div class="col-md-1"></div>    
+            <div class="col-md-10 table-responsive">
+            <h2 align="left">Attendance Dispute Requests</h2>
+            <table class="table ">
+              <tr>
+                <th>Employee</th>
+                <th>Dispute Date</th>
+                <th>Date Created</th>		
+                <th>Dept.</th>
+                <th>Branch</th>
+                <th>Log Type</th>
+               <th>Action</th>
+               </tr>
+              <tr>
+                <td>Maria Aguanta</td>  
+                <td>10/14/2014</td>
+                <td>10/15/2014</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a  data-toggle="modal" href="#dispute">
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true">&nbsp;&nbsp;&nbsp;</span>
+                    </a>
+
+                </td>
+              </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6"></div>
+            <div class="col-lg-6 col-md-6">
+                <div class="col-md-1"></div>    
+            <div class="col-md-10 table-responsive">
+            <h2 align="left">Dispute Request Completed</h2>
+            <table class="table">
+              <tr>
+                <th>Employee</th>
+                <th>Dispute Date</th>
+                <th>Date Created</th>		
+                <th>Branch</th>
+                <th>Status</th>
+                <th>By</th>
+                <th>Comment</th>
+              </tr>
+              <tr>
+                <td>Pedro Batonghinog</td>  
+                <td>10/14/2014</td>
+                <td>10/15/2014</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+            </div>
         </div>
     </div>
 </div>

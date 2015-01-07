@@ -43,17 +43,17 @@ return [
                      ],
                     "ob-status-monitoring" => [
                         'label' => "OB Status Monitoring",
-                        'route' => "mot/attendance/ob-status-monitoring",
+                        'route' => "mot/ob/ob-status-monitoring",
                         'icon' => "fa fa-calendar"
                     ],
                     "ob-approval" => [
                         'label' => "OB Approval",
-                        'route' => "mot/attendance/ob-approval",
+                        'route' => "mot/ob/ob-approval",
                         'icon' => "fa fa-calendar"
                     ],
                     "ob-report" => [
                         'label' => "OB Report",
-                        'route' => "mot/attendance/ob-report",
+                        'route' => "mot/ob/ob-report",
                         'icon' => "fa fa-calendar"
                     ],
 //                    "leave" => [
@@ -77,21 +77,16 @@ return [
                     ],
                     "regular-ob" => [
                         'label' => "Regular OB",
-                        'route' => "mot/attendance/ob",
+                        'route' => "mot/ob/regular",
                         'icon' => "fa fa-calendar"
                     ],
                     "early-ob" => [
                         'label' => "Early OB",
-                        'route' => "mot/attendance/early-ob",
+                        'route' => "mot/ob/early-ob",
                         'icon' => "fa fa-calendar"
-                    ],
-                    "leave" => [
-                        'label' => "Leave",
-                        'route' => "mot/attendance/leave",
-                        'icon' => "fa fa-calendar"
-                    ],
+                    ]
                 ]
             ]            
-        ]
+       ]
     ]
 ];

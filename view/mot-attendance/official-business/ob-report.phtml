@@ -1,6 +1,6 @@
-
-<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); 
-$this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
+<?php 
+    $this->inlineScript()->prependFile($this->basePath() . '/assets/mot-attendance/js/addrow.js');
+    $this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
             ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
             ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
             ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
@@ -25,30 +25,41 @@ $this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/med
 <div class="pageheader">
      <div class="media">
          <div class="pageicon pull-left">
-             <i class="fa fa-calendar"></i>
+             <i class="fa fa-line-chart"></i>
          </div>
          <div class="media-body" style="padding-left: 5px">
              <ul class="breadcrumb">
                  <li>
                      <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
                  </li>
-                 <li><a href="#">Attendance</a></li>
-                 <li>Attendance Record</li>
+                 <li><a href="#">Official Business</a></li>
+                 <li>Report</li>
              </ul>
-             <h4>Attendance Record</h4>
+             <h4>OB Report</h4>
          </div>
      </div>
 </div>
 <div class="contentpanel">
+        <div>
+        <div class="row">
+        <select>
+            <option>Branch</option>
+        </select>
+        <select>
+            <option>Employee</option>
+        </select>
 
-    <div class="row">
-       
-         <?php foreach ($this->result AS $data) {
+        &nbsp;From <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
+        &nbsp;To <input type="date">&nbsp;<i class="fa fa-calendar fa-2x"></i>
+        &nbsp;<button class="btn">View</button>
+        </div>
+        <br>
+      
+        <div class="table-responsive">
+            <?php foreach ($this->result AS $data) {
                 echo "<h3> {$data['title']} </h3>"
                 . "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
-            } 
-            echo $modal;
-            ?>
+            } ?>
     </div>
-   
+    </div>
 </div>

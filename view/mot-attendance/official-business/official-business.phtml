@@ -1,0 +1,65 @@
+
+<?php $this->inlineScript()->prependFile($this->basePath() . '/assets/mot-attendance/js/addrow.js');?>
+
+<div class="pageheader">
+     <div class="media">
+         <div class="pageicon pull-left">
+             <i class="fa fa-briefcase"></i>
+         </div>
+         <div class="media-body" style="padding-left: 5px">
+             <ul class="breadcrumb">
+                 <li>
+                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                 </li>
+                 <li><a href="#">Official Business</a></li>
+                 <li>Regular OB Application</li>
+             </ul>
+             <h4>OB Application</h4>
+         </div>
+     </div>
+</div>
+<div class="contentpanel">
+    <div class="row">
+        <div class="col-lg-1 col-md-1"></div>
+        <div class=" col-lg-10 col-md-10 table-responsive">
+            <table id="rowTable" class="table table-bordered table-condensed">
+                <tr>
+                    <th colspan="2" align="center">Destination</th>
+                    <th rowspan="2" align="center">Purpose</th>
+                    <th colspan="2" align="center">Expenses</th>
+                    <th rowspan="2">Action</th>
+                </tr>
+
+                <tr>
+                    <td>From</td>
+                    <td>To</td>
+                    <td>Description</td>
+                    <td>Amount</td>
+                </tr>
+                <tr>
+                    <td><input style="background-color: transparent;border: 0px solid;" name="from[]"type="text"></td>
+                    <td><input style="background-color: transparent;border: 0px solid;" name="to[]"type="text"></td>
+                    <td><input style="background-color: transparent;border: 0px solid;" name="purpose[]" type="text"></td>
+                    <td><input style="background-color: transparent;border: 0px solid;" name="description[]" type="text"></td>
+                    <td><input style="background-color: transparent;border: 0px solid;" name="amount[]"type="text"></td>
+                    <td class="col-md-1">
+                        <button class="remCF" id="deleteRow" value="Delete Row" type="button">
+                            <i class="fa fa-minus-circle"></i>
+                        </button>
+
+                    </td>
+                </tr>
+            </table>
+
+            <div align="right">
+                <button class="btn btn-default" type="button">Submit</button>
+                <button class="btn btn-default" id="addRowRegular" value="Add Row" type="button">
+                    <i class="fa fa-plus-circle"></i>
+                </button>
+            </div> 
+        </div>
+        <div class="col-lg-1 col-md-1"></div>
+    </div>
+
+    
+</div>

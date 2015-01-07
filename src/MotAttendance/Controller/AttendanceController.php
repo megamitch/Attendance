@@ -29,6 +29,9 @@ namespace MotAttendance\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\View\Model\JsonModel;
+use Zend\Db\TableGateway\TableGateway;
+use MotAttendance\Model\Attendance;
+use Zend\Db\ResultSet\ResultSet;
 
 /**
  * MotAttendance\Controller\AttendanceController
@@ -37,109 +40,26 @@ use Zend\View\Model\JsonModel;
  */
 class AttendanceController extends AbstractActionController
 {
-    
+    private $attendanceTable;
+  
     public function indexAction()
     {
-        $view = "";
-
-        $results = [
-            'dtr' => [['id'=>1,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'9:00 AM','out'=>'12:00 PM','comment'=>''],
-                      ['id'=>2,'date' => '10/15/2014', 'day' => 'wed','type' => '','in'=>'','out'=>'','comment'=>''],
-                      ['id'=>3,'date' => '10/14/2014', 'day' => 'tue','type' => 'Logged','in'=>'1:00 PM','out'=>'','comment'=>''],
-                      ['id'=>4,'date' => '10/14/2014', 'day' => 'tue','type' => 'Break','in'=>'','out'=>'3:20 PM','comment'=>''], 
-                      ['id'=>5,'date' => '10/19/2014', 'day' => 'sun','type' => '','in'=>'','out'=>'','comment'=>'']  
-                     ]
-                     ];
-   
+        $attendance = [
+                  'title' => strtoupper('Attendance'),
+                  'name' => 'datatables7',
+                  'header' => ['Work Date','Day','Type', 'In', 'Out', 'Remarks', 'Action'],
+                  'data'  => [
+                     ['10/14/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(1)],
+                     ['10/14/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(2)],
+                     ['10/19/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(3)]
+                  ]
+              ];    
+        $modal=$this->createModal(1, 10/14/2014).$this->createModal(2, 10/14/2014).$this->createModal(3, 10/19/2014);
         
-        if(empty($results)) {
-            $view = "<tr><td colspan='7' align='center'><font color='red'>No records found</font></td></tr>";
-        } else {
-            foreach($results['dtr'] AS $record) {
-               $view .= $this->setColorScheme($record['id'],$record['date'],
-                                                $record['day'],$record['type'],
-                                                $record['in'],$record['out'],$record['comment']);
-                 
-            }
-        }
+        return new ViewModel(['result' => [$attendance],'modal'=>$modal]);      
         
-        return new ViewModel(["data" => $view]);
     }
     
-    public function officialBusinessAction()
-    {
-      
-    }
-     public function earlyObAction()
-    {
-      
-    } 
-     public function obReportAction()
-    {
-      $result=[['date'=>'01/02/15','status'=>'denied','processed_by'=>'J.O.','comment'=>'not valid','type'=>'regular','date-requested'=>'01/02/15','time_requested'=>'9:10 AM',
-                'from'=>'Iligan','to'=>'Lugait','purpose'=>'ocular inspection','description'=>'fare back and forth','amount'=>'500.00','ob_out'=>'10:00 AM','ob_in'=>'5:00PM'],
-               ['date'=>'01/03/15','status'=>'approved','processed_by'=>'R.J.E.','comment'=>'important','type'=>'early','date-requested'=>'01/02/15','time_requested'=>'9:10 AM',
-                'from'=>'Iligan','to'=>'Lugait','purpose'=>'ocular inspection','description'=>'fare & snacks','amount'=>'1,000.00','ob_out'=>'','ob_in'=>'5:00PM'] 
-              ];
-      
-      $data="";
-     
-      if(empty($result)){
-          $data="<tr><td colspan=\"15\" align=\"center\"><font color=\"red\">No records found.</font></td></tr>";
-      }else{
-          foreach($result as $res){
-          $data.='<tr>'.$this->format($res).'</tr>';
-      }
-      }
-      return new ViewModel(["data" => $data]);     
-     } 
-    
-    public function obStatusMonitoringAction()
-    {
-        $results=[['status'=>'denied','processed_by'=>'Jermaine Obial','comment'=>'No budget for OB Trip','type'=>'early OB',
-                    'date'=>'12/13/14','time'=>'10:30 AM','from'=>'Iligan','to'=>'BDO Iligan','purpose'=>'apply for atm card'],
-                  ['status'=>'approved','processed_by'=>'Jermaine Obial','comment'=>'valid reason','type'=>'early OB',
-                    'date'=>'12/15/14','time'=>'10:30 AM','from'=>'Iligan','to'=>'Pag-Ibig Iligan','purpose'=>'apply for loan'],
-                  ['status'=>'denied','processed_by'=>'Jermaine Obial','comment'=>'','type'=>'Regular OB',
-                    'date'=>'12/15/14','time'=>'10:30 AM','from'=>'','to'=>'','purpose'=>'']
-                ];
-        $data="";
-        if(empty($results)){
-            $data="<tr><td colspan=\"12\"align=\"center\"><font color=\"red\">No records found.</font></td></tr>";
-        }else{
-            foreach($results as $value){
-                $data.='<tr>'.$this->format($value).'</tr>';
-            }
-        }
-              
-         return new ViewModel(["data" => $data]);
-    }    
-   
-    public function obApprovalAction()
-    {
-        $result=[['id'=>1,'name'=>'Roda Joy Eluna','branch'=>'Corp','dept'=>'HR','type'=>'early','date'=>'04/26/15','time'=>'9:00 AM',
-                  'from'=>'Iligan City','to'=>'Pag-Ibig','purpose'=>'mag-loan ug lovelife','description'=>'fare & snacks',
-                  'amt'=>'1,000.00'  ],
-                  ['id'=>2,'name'=>'Roda Joy Eluna','branch'=>'Corp','dept'=>'HR','type'=>'early','date'=>'','time'=>'9:00 AM',
-                  'from'=>'Iligan City','to'=>'Pag-Ibig','purpose'=>'mag-loan ug lovelife','description'=>'',
-                  'amt'=>'1,000.00'  ],
-                ];
-        $data="";
-        if(empty($result)){
-            $data="<tr><td colspan=\"12\"align=\"center\"><font color=\"red\">No records found.</font></td></tr>";
-        }else{
-            
-            foreach($result as $value){
-             $id=array_shift($value);   
-             $data.='<tr>'.$this->format($value);
-             $data.=$this->createButtons($id);
-             $data.=$this->setModal($id,'Approved');
-             $data.=$this->setModal($id,'Denied');
-             $data.='</tr>';
-            }
-        }
-        return new ViewModel(["data" => $data]);
-    }
     public function leaveFormAction()
     {
         
@@ -167,6 +87,7 @@ class AttendanceController extends AbstractActionController
             }
             $employee_options="<option>Employee</option>".$employee_options;
         }
+        
         return new ViewModel(["employee" => $employee_options]);
     }
      
@@ -282,6 +203,11 @@ class AttendanceController extends AbstractActionController
                     
         return $result; 
     }
+    private function disputeButton($id){
+        return '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
+                            <i class="fa fa-pencil-square-o"> Dispute</i>
+                         </button>';
+    }
     private function createOption($first_name,$last_name,$emp_id){
         $result="";
         $result.="<option value=".$emp_id."><b>".strtoupper($last_name)."</b>, ".$first_name."</option>";
@@ -372,4 +298,8 @@ class AttendanceController extends AbstractActionController
         $service;
     }
     
-}
+   
+    
+    }
+
+
