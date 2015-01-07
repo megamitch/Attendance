@@ -32,7 +32,10 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ControllerProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
-
+use MotAttendance\Model\Attendance;
+use MotAttendance\Model\AttendanceTable;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 /**
  * MotAttendance\Module
  * 
@@ -83,9 +86,23 @@ class Module implements
         return include __DIR__ . '/config/controllers.config.php';
     }
     
-    public function getServiceConfig()
-    {
-        return include __DIR__ . '/config/services.config.php';
-    }
-    
+     public function getServiceConfig()
+     {
+         return array(
+             'factories' => array(
+                 'MotAttendance\Model\AlbumTable' =>  function($sm) {
+                     $tableGateway = $sm->get('AlbumTableGateway');
+                     $table = new AlbumTable($tableGateway);
+                     return $table;
+                 },
+                 'AttendanceTableGateway' => function ($sm) {
+                     $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                     $resultSetPrototype = new ResultSet();
+                     $resultSetPrototype->setArrayObjectPrototype(new Attendance());
+                     return new TableGateway('MotAttendance', $dbAdapter, null, $resultSetPrototype);
+                 },
+             ),
+         );
+     //  return include __DIR__ . '/config/services.config.php';
+     }
 }

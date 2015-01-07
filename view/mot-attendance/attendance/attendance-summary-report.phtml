@@ -1,3 +1,27 @@
+
+<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); 
+$this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/jquery-ui.min.css');
+    
+    
+    $this->inlineScript()
+            ->prependFile($this->basePath('assets/mot-reports/js/datatable.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
+            ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
+            ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
+    
+    $this->inlineScript()->captureStart();
+    echo '
+        $(function() {
+            $( "#accordion" ).accordion();
+        }); 
+        ';
+    $this->inlineScript()->captureEnd();
+?>
 <div class="pageheader">
      <div class="media">
          <div class="pageicon pull-left">

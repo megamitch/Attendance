@@ -64,7 +64,6 @@ return [
                                 'options'   => [
                                     'route'     => '/leave',
                                     'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
                                         'action'        => 'leave-form'
                                     ]
                                 ]
@@ -74,7 +73,6 @@ return [
                                 'options'   => [
                                     'route'     => '/summary-report',
                                     'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
                                         'action'        => 'attendance-summary-report'
                                     ]
                                 ]
@@ -84,7 +82,6 @@ return [
                                 'options'   => [
                                     'route'     => '/iss-access',
                                     'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
                                         'action'        => 'iss-access'
                                     ]
                                 ]
@@ -94,63 +91,72 @@ return [
                                 'options'   => [
                                     'route'     => '/assigned-personnel-access',
                                     'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
                                         'action'        => 'assigned-personnel-access'
                                     ]
                                 ]
                             ],
-                            'early-ob' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/early-ob',
-                                    'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
-                                        'action'        => 'early-ob'
-                                    ]
-                                ]
-                            ],
-                            'ob-status-monitoring' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/ob-status-monitoring',
-                                    'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
-                                        'action'        => 'ob-status-monitoring'
-                                    ]
-                                ]
-                            ],
-                            'ob-approval' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/ob-approval',
-                                    'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
-                                        'action'        => 'ob-approval'
-                                    ]
-                                ]
-                            ],
-                            'ob-report' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/ob-report',
-                                    'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
-                                        'action'        => 'ob-report'
-                                    ]
-                                ]
-                            ],
-                            'ob' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/ob',
-                                    'defaults'  => [
-                                        'controller'    => 'MotAttendance\Controller\Attendance',
-                                        'action'        => 'official-business'
-                                    ]
-                                ]
-                            ]
+                                                                                                      
                         ] //end of attendance child routes
-                    ] //end of Attendance
+                    ], //end of Attendance
+                    
+                    'ob' => [
+                        'type' => 'Segment',
+                        'options' => [
+                            'route' => '/ob',
+                            'defaults' => [
+                                'controller'    => 'MotAttendance\Controller\OB',
+                                'action'        => 'official-business'
+                            ]
+                        ],
+                        'may_terminate' => true,
+                        'child_routes' => [
+                            'ob-report' => [
+                                    'type'      => 'Literal',
+                                    'options'   => [
+                                        'route'     => '/ob-report',
+                                        'defaults'  => [
+                                            'action'        => 'ob-report'
+                                        ]
+                                    ]
+                                ],
+                             'early-ob' => [
+                                    'type'      => 'Literal',
+                                    'options'   => [
+                                        'route'     => '/early-ob',
+                                        'defaults'  => [
+                                            'action'        => 'early-ob'
+                                        ]
+                                    ]
+                                ],
+                            'ob-status-monitoring' => [
+                                    'type'      => 'Literal',
+                                    'options'   => [
+                                        'route'     => '/ob-status-monitoring',
+                                        'defaults'  => [
+                                            'action'        => 'ob-status-monitoring'
+                                        ]
+                                    ]
+                                ],
+                            'ob-approval' => [
+                                    'type'      => 'Literal',
+                                    'options'   => [
+                                        'route'     => '/ob-approval',
+                                        'defaults'  => [
+                                            'action'        => 'ob-approval'
+                                        ]
+                                    ]
+                                ],
+                            'ob-report' => [
+                                    'type'      => 'Literal',
+                                    'options'   => [
+                                        'route'     => '/ob-report',
+                                        'defaults'  => [
+                                            'action'        => 'ob-report'
+                                        ]
+                                    ]
+                                ],
+                        ]
+                    ] //endof OB routes
                 ]
             ]
         ]        

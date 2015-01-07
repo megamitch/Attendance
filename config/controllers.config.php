@@ -27,6 +27,7 @@
 return [
     'invokables' => [
         'MotAttendance\Controller\Attendance' => 'MotAttendance\Controller\AttendanceController',
+        'MotAttendance\Controller\OB' => 'MotAttendance\Controller\OfficialBusinessController'
         
     ],
 //    'factories' => [
