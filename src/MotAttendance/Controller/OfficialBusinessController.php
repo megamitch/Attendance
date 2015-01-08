@@ -46,7 +46,7 @@ class OfficialBusinessController extends AbstractActionController{
   
     $OBStatus = [
             'title' => strtoupper('OB Report'),
-            'name' => 'datatables5',
+            'name' => 'datatables14',
             'header' => ['Date','Status','Processed by', 'Comment', 'Type', 'Date Requested', 'Time Requested', 'Destination From', 
                          'Destination To', 'Purpose','Expense Description','Expense Amount','OB Out','OB In'],
             'data'  => [
@@ -88,7 +88,7 @@ class OfficialBusinessController extends AbstractActionController{
      
         $OBStatus = [
             'title' => strtoupper('OB Status'),
-            'name' => 'datatables3',
+            'name' => 'datatables9',
             'header' => ['Status','Processed by', 'Comment', 'Type', 'Date', 'Time', 'Destination From', 'Destination To', 'Purpose'],
             'data'  => [
                 ['Denied','Jermaine Obial', 'No Budget for OB Trip', 'Early OB', '12/13/14', '10:30 AM', 'Iligan City', 'BDO Iligan','Apply for ATM Card'],
