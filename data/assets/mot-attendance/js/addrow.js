@@ -33,7 +33,7 @@ $('#addRowEarly').click( function() {
                             <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"purpose[]\" type=\"text\"></td>\n\
                             <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"description[]\" type=\"text\"></td>\n\
                             <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"amount[]\" type=\"text\"></td>\n\
-                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"date[]\" type=\"text\"></td>\n\
+                            <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"date[]\" type=\"date\"></td>\n\
                             <td><input style=\"background-color: transparent;border: 0px solid;\" name=\"time[]\" type=\"text\"></td>\n\
                             <td class=\"col-md-1\">\n\
                                 <button class=\"remCF\"  type=\"button\">\n\

@@ -54,7 +54,7 @@ class AttendanceController extends AbstractActionController
                      ['10/19/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(3)]
                   ]
               ];    
-        $modal=$this->createModal(1, 10/14/2014).$this->createModal(2, 10/14/2014).$this->createModal(3, 10/19/2014);
+        $modal=$this->createModal(1, '10/14/2014').$this->createModal(2, '10/14/2014').$this->createModal(3, '10/19/2014');
         
         return new ViewModel(['result' => [$attendance],'modal'=>$modal]);      
         
@@ -87,8 +87,27 @@ class AttendanceController extends AbstractActionController
             }
             $employee_options="<option>Employee</option>".$employee_options;
         }
+        $summaryReport = [
+            'title' => strtoupper('OB Report'),
+            'name' => 'datatables9',
+            'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
+                         'Remarks'],
+            'data'  => [
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+            ]
+        ];
         
-        return new ViewModel(["employee" => $employee_options]);
+        $details=[
+            "name"=>"Maria Aguanta",
+            "emp_id"=>"01-0018",
+            "dept"=>"Sales",
+            "position"=>"Credit Officer",
+            "from"=>"10/14/2014",
+            "to"=>"10/26/2014"
+        ];
+        return new ViewModel(["employee" => $employee_options,"result"=>[$summaryReport],"details"=>$details]);
     }
      
     public function issAccessAction()
@@ -107,7 +126,26 @@ class AttendanceController extends AbstractActionController
             }
             $employee_options="<option>Employee</option>".$employee_options;
         }
-        return new ViewModel(["employee" => $employee_options]);
+        $summaryReport = [
+            'title' => strtoupper('OB Report'),
+            'name' => 'datatables9',
+            'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
+                         'Remarks'],
+            'data'  => [
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+            ]
+        ];
+         $details=[
+            "name"=>"Maria Aguanta",
+            "emp_id"=>"01-0018",
+            "dept"=>"Sales",
+            "position"=>"Credit Officer",
+            "from"=>"10/14/2014",
+            "to"=>"10/26/2014"
+        ];
+        return new ViewModel(["employee" => $employee_options,"result"=>[$summaryReport],"details"=>$details]);
     }
     
     public function assignedPersonnelAccessAction()
@@ -123,7 +161,26 @@ class AttendanceController extends AbstractActionController
             }
             $branch="<option>Branch</option>".$branch;
         }
-        return new ViewModel(["branch" => $branch]);
+        $summaryReport = [
+            'title' => strtoupper('OB Report'),
+            'name' => 'datatables9',
+            'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
+                         'Remarks'],
+            'data'  => [
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+            ]
+        ];
+          $details=[
+            "name"=>"Maria Aguanta",
+            "emp_id"=>"01-0018",
+            "dept"=>"Sales",
+            "position"=>"Credit Officer",
+            "from"=>"10/14/2014",
+            "to"=>"10/26/2014"
+        ];
+        return new ViewModel(["branch" => $branch,"result"=>[$summaryReport],"details"=>$details]);
     }
     private function createButtons($id){
         $buttons='<td>'
