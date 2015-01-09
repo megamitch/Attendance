@@ -1,3 +1,26 @@
+<?php
+    $this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
+            ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
+            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/jquery-ui.min.css');
+    
+    
+    $this->inlineScript()
+            ->prependFile($this->basePath('assets/mot-reports/js/datatable.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
+            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
+            ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
+            ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
+    
+    $this->inlineScript()->captureStart();
+    echo '
+        $(function() {
+            $( "#accordion" ).accordion();
+        }); 
+        ';
+    $this->inlineScript()->captureEnd();
+?>
 <div class="pageheader">
      <div class="media">
          <div class="pageicon pull-left">
@@ -34,64 +57,27 @@
         <div class="row">
             <div class="col-lg-6 col-md-6">
                 <div id="attendanceRecord" class="table-responsive"> 
-                <table class="table">
+               
                 <div style="background-color:#D8D8D8" align="center">
                     <br>
                     <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
                     <strong>Summary Report</strong>
-                    <p><strong>From</strong> 10/14/2014&nbsp;&nbsp;&nbsp;&nbsp;<strong>To</strong>10/26/2014</p>
-                    <p>
-                        <strong>NAME: </strong>Maria Aguanta&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>01-0018 
-                        &nbsp;&nbsp;&nbsp;&nbsp;
-                        <strong>DEPT:</strong>Sales&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION:</strong> Credit Officer
-                    </p>
+                    
+                    <?php
+                    echo "<p><strong>From </strong>{$details['from']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>To </strong>{$details['to']}</p>
+                        <p>
+                            <strong>NAME: </strong>{$details['name']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>{$details['emp_id']} 
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <strong>DEPT: </strong>{$details['dept']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION: </strong>{$details['position']}
+                        </p>";
+                    ?>
                     <br>
-                </div>  
+                </div> 
 
-                <tr bgcolor="#F0F0F0 ">
-                    <th>Work Date</th> 
-                    <th>Day</th>
-                    <th>Type</th>
-                    <th colspan="2">Actual Time</th>
-                    <th>Late In</th>
-                    <th>Early Out</th>
-                    <th>Brk Total</th>
-                    <th>Remarks</th>
-                </tr>
-                <tr>
-                    <td>10/14/2014</td>
-                    <td>Tue</td>
-                    <td>Logged</td>
-                    <td>8:47</td>
-                    <td>18:10</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>10/15/2014</td>
-                    <td>Wed</td>
-                    <td>Logged</td>
-                    <td>9:04</td>
-                    <td>11:57</td>
-                    <td>4</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                   <tr class="danger">
-                    <td>10/16/2014</td>
-                    <td>Thu</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>Holiday</td>
-                </tr>
-            </table>
+                <?php foreach ($this->result AS $data) {
+                echo "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
+            } ?>
+    
             </div>
             </div>
 
