@@ -40,9 +40,12 @@
 </div>
 <div class="contentpanel">
     <div class="table-responsive">
-            <?php foreach ($this->result AS $data) {
+            <?php 
+            foreach ($this->result AS $data) 
+            {
                 echo "<h3> {$data['title']} </h3>"
                 . "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
-            } ?>
+            } 
+            ?>
     </div>    
 </div>

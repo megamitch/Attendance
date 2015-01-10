@@ -88,7 +88,7 @@ class AttendanceController extends AbstractActionController
             $employee_options="<option>Employee</option>".$employee_options;
         }
         $summaryReport = [
-            'title' => strtoupper('OB Report'),
+            'title' => strtoupper('Summary Report'),
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
@@ -127,7 +127,7 @@ class AttendanceController extends AbstractActionController
             $employee_options="<option>Employee</option>".$employee_options;
         }
         $summaryReport = [
-            'title' => strtoupper('OB Report'),
+            'title' => strtoupper('Summary Report'),
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
@@ -162,7 +162,7 @@ class AttendanceController extends AbstractActionController
             $branch="<option>Branch</option>".$branch;
         }
         $summaryReport = [
-            'title' => strtoupper('OB Report'),
+            'title' => strtoupper('Summary Report'),
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
