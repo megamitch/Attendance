@@ -44,16 +44,30 @@ class AttendanceController extends AbstractActionController
   
     public function indexAction()
     {
+        $result=[
+                 [1,'10/14/2014','tue','Logged','9:00 AM','',''],
+                 [2,'10/14/2014','tue','Logged','','12:00 PM',''],
+                 [3,'10/14/2014','tue','Logged','9:00 AM','12:00 PM','']
+                ];
+        
+          $data=[];
+        
+         if($result){
+            foreach ($result as $value){
+                $id=array_shift($value);
+                $temp=$this->setColor($value);
+                array_push($temp,$this->disputeButton($id));
+                array_push($data,$temp);
+            }
+         }
+         
         $attendance = [
                   'title' => strtoupper('Attendance'),
                   'name' => 'datatables7',
                   'header' => ['Work Date','Day','Type', 'In', 'Out', 'Remarks', 'Action'],
-                  'data'  => [
-                     ['10/14/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(1)],
-                     ['10/14/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(2)],
-                     ['10/19/2014','tue','Logged','9:00 AM','12:00 PM','',$this->disputeButton(3)]
-                  ]
-              ];    
+                  'data'  =>$data 
+                  ];    
+    
         $modal=$this->createModal(1, '10/14/2014').$this->createModal(2, '10/14/2014').$this->createModal(3, '10/19/2014');
         
         return new ViewModel(['result' => [$attendance],'modal'=>$modal]);      
@@ -181,6 +195,19 @@ class AttendanceController extends AbstractActionController
             "to"=>"10/26/2014"
         ];
         return new ViewModel(["branch" => $branch,"result"=>[$summaryReport],"details"=>$details]);
+    }
+        private function setColor($result){
+        
+        $returnValue=[];
+        
+        foreach ($result as $data){
+            if($data==''){
+               array_push($returnValue,'<b><font color="red">---</font></b>');
+            }else{
+               array_push($returnValue,$data); 
+            }
+        }
+        return $returnValue;
     }
     private function createButtons($id){
         $buttons='<td>'
