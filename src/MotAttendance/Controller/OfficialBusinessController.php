@@ -85,20 +85,23 @@ class OfficialBusinessController extends AbstractActionController{
     {   
         $result=[
                 [1,'Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
-                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
+                  'Iligan City','','mag-loan ug lovelife','fare & snacks',
                   '1,000.00'],
-                [2,'Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
+                [2,'Roda Joy Eluna','Corp','HR','early','','9:00 AM',
                   'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
                   '1,000.00'],
                 [3,'Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
-                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
+                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','',
                   '1,000.00']
                 ];
         $data=[];
         
          if($result){
             foreach ($result as $value){
-                array_push($data,$this->setColorWithButtons($value));
+                $id=array_shift($value);
+                $temp=$this->setColor($value);
+                array_push($temp,$this->createButtons($id));
+                array_push($data,$temp);
             }
          }
         
@@ -108,17 +111,7 @@ class OfficialBusinessController extends AbstractActionController{
             'header' => ['Name','Branch', 'Department', 'Type', 'Date', 'Time', 'Destination From', 'Destination To', 'Purpose',
                          'Expense Description','Expense Amount','Action'],
             'data'=>$data
-//            'data'  => [
-//                ['Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
-//                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
-//                  '1,000.00',$this->createButtons(1) ],
-//                ['Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
-//                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
-//                  '1,000.00',$this->createButtons(2) ],
-//                ['Roda Joy Eluna','Corp','HR','early','04/26/15','9:00 AM',
-//                  'Iligan City','Pag-Ibig','mag-loan ug lovelife','fare & snacks',
-//                  '1,000.00',$this->createButtons(3)],
-//            ]
+
         ];
         
         $modal=$this->setModal(1,'Approved').$this->setModal(1,'Denied');
@@ -127,23 +120,7 @@ class OfficialBusinessController extends AbstractActionController{
              
         return new ViewModel(['result' => [$OBApproval],'modal'=>$modal]);
     }
-    private function setColorWithButtons($result){
-        
-        $returnValue=[];
-        
-        $id= array_shift($result);             
-        foreach ($result as $data){
-            
-            if($data==''){
-               array_push($returnValue,'<b><font color="red">---</font></b>');
-            }else{
-               array_push($returnValue,$data); 
-            }
-        }
-        
-        return array_push($returnValue,$this->createButtons($id));
-    }
-    
+   
     private function setColor($result){
         
         $returnValue=[];
