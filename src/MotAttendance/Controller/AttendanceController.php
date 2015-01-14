@@ -91,6 +91,18 @@ class AttendanceController extends AbstractActionController
                  ['first_name'=>'Roda Joy','last_name'=>'Eluna','emp_id'=>'01-0019','dept'=>'HR Manager']
                 ]; 
         
+        $SummaryReportResults=[
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/15/2014','Wed','Logged','8:47','18:10','','','','']
+                             ];
+        $SummaryReportData=[];
+        
+        if($SummaryReportResults){
+            foreach ($SummaryReportResults as $value){
+                array_push($SummaryReportData,$this->setColor($value));
+            }
+        }        
         $employee_options="";
         
         if(empty($result)){
@@ -101,16 +113,13 @@ class AttendanceController extends AbstractActionController
             }
             $employee_options="<option>Employee</option>".$employee_options;
         }
+        
         $summaryReport = [
             'title' => strtoupper('Summary Report'),
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
-            'data'  => [
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-            ]
+            'data'  =>$SummaryReportData
         ];
         
         $details=[
@@ -121,6 +130,7 @@ class AttendanceController extends AbstractActionController
             "from"=>"10/14/2014",
             "to"=>"10/26/2014"
         ];
+        
         return new ViewModel(["employee" => $employee_options,"result"=>[$summaryReport],"details"=>$details]);
     }
      
@@ -129,6 +139,19 @@ class AttendanceController extends AbstractActionController
         $result=[['first_name'=>'Maria','last_name'=>'Aguanta','emp_id'=>'01-0018','dept'=>'Credit Officer'],
                  ['first_name'=>'Roda Joy','last_name'=>'Eluna','emp_id'=>'01-0019','dept'=>'HR Manager']
                 ]; 
+        
+        $SummaryReportResults=[
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/15/2014','Wed','Logged','8:47','18:10','','','','']
+                             ];
+        $SummaryReportData=[];
+        
+        if($SummaryReportResults){
+            foreach ($SummaryReportResults as $value){
+                array_push($SummaryReportData,$this->setColor($value));
+            }
+        }      
         
         $employee_options="";
         
@@ -145,11 +168,8 @@ class AttendanceController extends AbstractActionController
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
-            'data'  => [
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-            ]
+            'data'  => $SummaryReportData
+        
         ];
          $details=[
             "name"=>"Maria Aguanta",
@@ -175,17 +195,28 @@ class AttendanceController extends AbstractActionController
             }
             $branch="<option>Branch</option>".$branch;
         }
+         $SummaryReportResults=[
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
+                                ['10/15/2014','Wed','Logged','8:47','18:10','','','','']
+                             ];
+        $SummaryReportData=[];
+        
+        if($SummaryReportResults){
+            foreach ($SummaryReportResults as $value){
+                array_push($SummaryReportData,$this->setColor($value));
+            }
+        }      
+        
+        
         $summaryReport = [
             'title' => strtoupper('Summary Report'),
             'name' => 'datatables9',
             'header' => ['Work Date','Day','Type', 'Actual Time In', 'Actual Time Out', 'Late In', 'Early Out', 'Brk Total', 
                          'Remarks'],
-            'data'  => [
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-                ['10/14/2014','Tue','Logged','8:47','18:10','','','',''],
-            ]
+            'data'  =>$SummaryReportData
         ];
+        
           $details=[
             "name"=>"Maria Aguanta",
             "emp_id"=>"01-0018",
@@ -246,46 +277,6 @@ class AttendanceController extends AbstractActionController
   </div>
 </div>';
      return $modal;   
-    }
-    private function setColorScheme($id,$date,$day,$type,$in,$out,$comment)
-    {
-        $record=[$date,$day,$type,$in,$out];    
-        $result="";    
-        foreach($record as $data){
-            
-               if(empty($data)){
-                   $result.="<td class='danger'><font color='red'>-</font></td>";
-               }else{
-                   $result.="<td>".$data."</td>";
-               } 
-            }
-            if($day=="sun"){
-                $comment="holiday";
-                
-                $result.="<td>".$comment."</td><td></td>";
-                $result="<tr class=\"danger\">".$result."</tr>"; 
-            }else if($type==""){
-                $comment="absent";
-            
-                $result.="<td>".$comment."</td><td>" .
-                        '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
-                            <i class="fa fa-pencil-square-o"> Dispute</i>
-                         </button>'
-                        . "</td>";
-                $result.=$this->createModal($id,$date);
-                 $result="<tr class=\"danger\">".$result."</tr>";
-            }else{
-                $result.="<td>".$comment."</td><td>" .
-                        '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
-                            <i class="fa fa-pencil-square-o"> Dispute</i>
-                         </button>'
-                        . "</td>";
-                $result.=$this->createModal($id,$date);
-                $result="<tr>".$result."</tr>";
-            }
-            
-                    
-        return $result; 
     }
     private function disputeButton($id){
         return '<button type="button" class="btn btn-xs" data-toggle="modal" data-target="#'.$id.'">
