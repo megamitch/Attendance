@@ -1,7 +1,7 @@
 <?php
 return array(
      'db' => array(
-         'username' => 'dsagasdga',
+         'username' => 'fdsbsdfb',
          'password' => 'adrfhaerh!!',
      ),
  );
