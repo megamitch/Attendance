@@ -1,0 +1,6 @@
+attendance and employee details
+
+select * from mmci_attendance.employee_time_log a join mmci_main.employee b on a.employee_id=b.employee_id
+
+
+
