@@ -41,26 +41,16 @@ return [
                          'route' => "mot/attendance/summary-report",
                          'icon' => "fa fa-calendar"
                      ],
-                    "ob-status-monitoring" => [
-                        'label' => "OB Status Monitoring",
-                        'route' => "mot/ob/ob-status-monitoring",
-                        'icon' => "fa fa-calendar"
-                    ],
-                    "ob-approval" => [
-                        'label' => "OB Approval",
-                        'route' => "mot/ob/ob-approval",
-                        'icon' => "fa fa-calendar"
-                    ],
-                    "ob-report" => [
-                        'label' => "OB Report",
-                        'route' => "mot/ob/ob-report",
-                        'icon' => "fa fa-calendar"
-                    ],
-//                    "leave" => [
-//                        'label' => "Leave",
-//                        'route' => "mot/attendance/leave",
-//                        'icon' => "fa fa-calendar"
-//                    ]
+                    "iss-report" => [ 
+                        'label' => "ISS Access",
+                         'route' => "mot/attendance/iss-access",
+                         'icon' => "fa fa-calendar"
+                     ],
+                    "assigned-personnel-access" => [ 
+                        'label' => "Assigned Personnel Access",
+                         'route' => "mot/attendance/assigned-personnel-access",
+                         'icon' => "fa fa-calendar"
+                     ]
                 ] //endofpages
             ]
         ],
