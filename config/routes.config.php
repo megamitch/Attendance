@@ -98,65 +98,6 @@ return [
                                                                                                       
                         ] //end of attendance child routes
                     ], //end of Attendance
-                    
-                    'ob' => [
-                        'type' => 'Segment',
-                        'options' => [
-                            'route' => '/ob',
-                            'defaults' => [
-                                'controller'    => 'MotAttendance\Controller\OB',
-                                'action'        => 'official-business'
-                            ]
-                        ],
-                        'may_terminate' => true,
-                        'child_routes' => [
-                            'ob-report' => [
-                                    'type'      => 'Literal',
-                                    'options'   => [
-                                        'route'     => '/ob-report',
-                                        'defaults'  => [
-                                            'action'        => 'ob-report'
-                                        ]
-                                    ]
-                                ],
-                             'early-ob' => [
-                                    'type'      => 'Literal',
-                                    'options'   => [
-                                        'route'     => '/early-ob',
-                                        'defaults'  => [
-                                            'action'        => 'early-ob'
-                                        ]
-                                    ]
-                                ],
-                            'ob-status-monitoring' => [
-                                    'type'      => 'Literal',
-                                    'options'   => [
-                                        'route'     => '/ob-status-monitoring',
-                                        'defaults'  => [
-                                            'action'        => 'ob-status-monitoring'
-                                        ]
-                                    ]
-                                ],
-                            'ob-approval' => [
-                                    'type'      => 'Literal',
-                                    'options'   => [
-                                        'route'     => '/ob-approval',
-                                        'defaults'  => [
-                                            'action'        => 'ob-approval'
-                                        ]
-                                    ]
-                                ],
-                            'ob-report' => [
-                                    'type'      => 'Literal',
-                                    'options'   => [
-                                        'route'     => '/ob-report',
-                                        'defaults'  => [
-                                            'action'        => 'ob-report'
-                                        ]
-                                    ]
-                                ],
-                        ]
-                    ] //endof OB routes
                 ]
             ]
         ]        
