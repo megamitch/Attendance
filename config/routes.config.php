@@ -59,15 +59,6 @@ return [
                                     ]
                                 ]
                             ],
-                            'leave' => [
-                                'type'      => 'Literal',
-                                'options'   => [
-                                    'route'     => '/leave',
-                                    'defaults'  => [
-                                        'action'        => 'leave-form'
-                                    ]
-                                ]
-                            ],
                             'summary-report' => [
                                 'type'      => 'Literal',
                                 'options'   => [
