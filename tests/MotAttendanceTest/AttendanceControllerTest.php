@@ -37,27 +37,9 @@ class AttendanceControllerTest extends \PHPUnit_Framework_TestCase
 {
     /** 
      * @test
-     * @expectedException Exception
-     * @expectedExceptionMessage There are missing records
      */
     public function mustReturnExceptionIfThereAreMissingData()
     {
-        $controller = new AttendanceController();
         
-        $data = ['1', '2', '3'];
-        
-//        $this->assertTrue(array_key_exists("day", $data));
-        
-        $controller->setColorScheme($data);
-    }
-    
-    public function modelMustHaveKeys()
-    {
-        $controller = $this->getMockBuilder("MotAttendance\Controller\AttendanceController")->disableOriginalConstructor()->getMock();
-        
-        $expectation = "<tr><td>date</td></tr>";
-        
-        $controller->expects(
-                );
     }
 }
