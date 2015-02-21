@@ -1,54 +1,55 @@
+<?php 
 
-<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); 
-$this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
-            ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
-            ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
-            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
-            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/jquery-ui.min.css');
-    
-    
-    $this->inlineScript()
-            ->prependFile($this->basePath('assets/mot-attendance/js/datatable.js'))
-            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
-            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
-            ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
-            ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
-    
-    $this->inlineScript()->captureStart();
-    echo '
-        $(function() {
-            $( "#accordion" ).accordion();
-        }); 
-        ';
-    $this->inlineScript()->captureEnd();
+$this->headLink()
+    ->prependStylesheet($this->basePath('assets/datatables/media/css/jquery.dataTables_themeroller.css'))
+    ->prependStylesheet($this->basePath('assets/datatables/extras/TableTools/media/css/TableTools.css'))
+//    ->prependStylesheet($this->basePath('assets/datatables/media/css/jquery.dataTables.min.css'))
+    ->prependStylesheet($this->basePath('assets/jquery-ui/themes/humanity/theme.css'))
+    ->prependStylesheet($this->basePath('assets/jquery-ui/themes/humanity/jquery-ui.min.css'));
+
+$this->inlineScript()
+    ->prependFile($this->basePath('assets/mot-attendance/js/datatable.js'))
+    ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
+    ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
+    ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
+    ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
+
+$this->inlineScript()->captureStart();
+echo '
+    $(function() {
+        $( "#accordion" ).accordion();
+    }); 
+    ';
+$this->inlineScript()->captureEnd();
 ?>
 <div class="pageheader">
-     <div class="media">
-         <div class="pageicon pull-left">
-             <i class="fa fa-calendar"></i>
-         </div>
-         <div class="media-body" style="padding-left: 5px">
-             <ul class="breadcrumb">
-                 <li>
-                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
-                 </li>
-                 <li><a href="#">Attendance</a></li>
-                 <li>Attendance Record</li>
-             </ul>
-             <h4>Attendance Record</h4>
-         </div>
-     </div>
+    <div class="media">
+        <div class="pageicon pull-left">
+            <i class="fa fa-calendar"></i>
+        </div>
+        <div class="media-body" style="padding-left: 5px">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                </li>
+                <li><a href="#">Attendance</a></li>
+                <li>Attendance Record</li>
+            </ul>
+            <h4>Attendance Record</h4>
+        </div>
+    </div>
 </div>
 <div class="contentpanel">
-
-    <div class="row">
-       
-         <?php foreach ($this->result AS $data) {
-                echo "<h3> {$data['title']} </h3>"
-                . "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
-            } 
-            echo $modal;
+    <div class="row-fluid">       
+        <div id="accordion">
+            <?php 
+                foreach ($this->result AS $data) {
+                   echo "<h3> {$data['title']} </h3>"
+                   . "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
+                }
             ?>
+        </div>
+        <?php echo $modal; ?>
     </div>
    
 </div>
