@@ -1,127 +1,135 @@
-<?php $this->inlineScript()->appendFile($this->basePath() . '/assets/mot-attendance/js/sample.js'); 
-$this->headLink()->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables_themeroller.css')
-            ->prependStylesheet($this->basePath() . '/assets/datatables/extras/TableTools/media/css/TableTools.css')
-            ->prependStylesheet($this->basePath() . '/assets/datatables/media/css/jquery.dataTables.min.css')
-            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/theme.css')
-            ->prependStylesheet($this->basePath() . '/assets/jquery-ui/themes/humanity/jquery-ui.min.css');
+<?php 
+
+$this->headLink()
+    ->prependStylesheet($this->basePath('assets/datatables/media/css/jquery.dataTables_themeroller.css'))
+    ->prependStylesheet($this->basePath('assets/datatables/extras/TableTools/media/css/TableTools.css'))
+    ->prependStylesheet($this->basePath('assets/datatables/media/css/jquery.dataTables.min.css'))
+    ->prependStylesheet($this->basePath('assets/jquery-ui/themes/humanity/theme.css'))
+    ->prependStylesheet($this->basePath('assets/jquery-ui/themes/humanity/jquery-ui.min.css'));
     
+$this->inlineScript()
+    ->prependFile($this->basePath('assets/mot-attendance/js/datatable.js'))
+    ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
+    ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
+    ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
+    ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
     
-    $this->inlineScript()
-            ->prependFile($this->basePath('assets/mot-attendance/js/datatable.js'))
-            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/TableTools.js'))
-            ->prependFile($this->basePath('assets/datatables/extras/TableTools/media/js/ZeroClipboard.js'))
-            ->prependFile($this->basePath('assets/datatables/media/js/jquery.dataTables.min.js'))
-            ->prependFile($this->basePath('assets/jquery-ui/jquery-ui.min.js'));
-    
-    $this->inlineScript()->captureStart();
-    echo '
-        $(function() {
-            $( "#accordion" ).accordion();
-        }); 
-        ';
-    $this->inlineScript()->captureEnd();
+$this->inlineScript()->captureStart();
+echo '
+    $(function() {
+        $( "#accordion" ).accordion();
+    }); 
+    ';
+$this->inlineScript()->captureEnd();
 ?>
 <div class="pageheader">
-     <div class="media">
-         <div class="pageicon pull-left">
-             <i class="fa fa-calendar"></i>
-         </div>
-         <div class="media-body" style="padding-left: 5px">
-             <ul class="breadcrumb">
-                 <li>
-                     <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
-                 </li>
-                 <li><a href="#">Attendance</a></li>
-                 <li>Personnel Access</li>
-             </ul>
-             <h4>Assigned Personnel Access</h4>
-         </div>
-     </div>
-</div>
-<div class="contentpanel">
-        <div class="row">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                     <select>
+    <div class="col-md-5 pull-left">
+        <div class="media">
+            <div class="pageicon pull-left">
+                <i class="fa fa-calendar"></i>
+            </div>
+            <div class="media-body" style="padding-left: 5px">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="<?php echo $this->url('mot');?>"><i class="glyphicon glyphicon-home"></i></a>
+                    </li>
+                    <li><a href="#">Attendance</a></li>
+                    <li>Personnel Access</li>
+                </ul>
+                <h4>Assigned Personnel Access</h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7 pull-right">
+        <form role="form" class="form-inline pull-right">
+            <div class="form-group">
+                <select class="form-control tooltips" 
+                    data-placement="top" 
+                    title="Select Branch">
                     <?php echo $branch;?>
                 </select>
-                <select>
-                    <option>Employee 1</option>
+            </div>
+            <div class="form-group">
+                <select class="form-control tooltips"
+                        data-placement="top" 
+                        title="Select Employee">
+                    <option>All</option>
                     <option>Employee 2</option>
                     <option>Employee 3</option>
                 </select>
-                <select>
+            </div>
+            <div class="form-group">
+                <select class="form-control tooltips"
+                        data-placement="top" 
+                        title="Select Cutoff Date">
                     <option>Month/Year</option>
                     <option>Month/Year</option>
                     <option>Month/Year</option>
                 </select>
-                &nbsp;&nbsp;<button class="btn btn-default">View</button>
-                </div>
             </div>
-            <br>
+        </form>
+    </div>
+</div>
+<div class="contentpanel">
+    <div class="row-fluid">
+        <div class="col-lg-6 col-md-6 table-responsive">
+            <h4>Employee Attendance Data</h4>
+            <table class="table">
+                <tr>
+                    <th>Employee</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Date/Time</th>
+                    <th>Checking</th>
+                </tr>
+                <tr>
+                    <td>Alyssa Charm Manugos</td>
+                    <td>CO</td>
+                    <td>Completed</td>
+                    <td>10-28-2014/10:30 AM</td>
+                    <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
+                </tr>
+                <tr>
+                    <td>Jhossana De Gracia</td>
+                    <td>CO</td>
+                    <td>INC</td>
+                    <td></td>
+                    <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
+                </tr>
+            </table>
+
             <div class="row">
-                <div class="col-lg-6 col-md-6 table-responsive">
-                     <h4>Employee Attendance Data</h4>
-                    <table class="table">
-                        <tr>
-                            <th>Employee</th>
-                            <th>Title</th>
-                            <th>Status</th>
-                            <th>Date/Time</th>
-                            <th>Checking</th>
-                        </tr>
-                        <tr>
-                            <td>Alyssa Charm Manugos</td>
-                            <td>CO</td>
-                            <td>Completed</td>
-                            <td>10-28-2014/10:30 AM</td>
-                            <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
-                        </tr>
-                        <tr>
-                            <td>Jhossana De Gracia</td>
-                            <td>CO</td>
-                            <td>INC</td>
-                            <td></td>
-                            <td><a href="#"><span class="glyphicon glyphicon-check"></span>Check</a></td>
-                        </tr>
-                    </table>
-
-                     <div class="row">
-                    <div class="col-md-6">
-                        <button class="btn btn-primary">Completed</button>
-                    </div>
-                    <div class="col-md-6" align="right">
-                        <p>
-                            <strong>Date:</strong> 10/24/2014<br>
-                            <strong>Time:</strong> 1:00 PM
-                        </p>
-                    </div>
+                <div class="col-md-6">
+                    <button class="btn btn-primary">Completed</button>
                 </div>
-                </div>
-                <div class="col-lg-6 col-md-6 table-responsive">
-                    <br>
-                   
-                    <div style="background-color:#D8D8D8" align="center">
-                    <br>
-                    <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
-                    <strong>Summary Report</strong>
-                    
-                    <?php
-                    echo "<p><strong>From </strong>{$details['from']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>To </strong>{$details['to']}</p>
-                        <p>
-                            <strong>NAME: </strong>{$details['name']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>{$details['emp_id']} 
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <strong>DEPT: </strong>{$details['dept']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION: </strong>{$details['position']}
-                        </p>";
-                    ?>
-                    <br>
-                </div>  
-
-                     <?php foreach ($this->result AS $data) {
-                        echo "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
-                    } ?>
+                <div class="col-md-6" align="right">
+                    <p>
+                        <strong>Date:</strong> 10/24/2014<br>
+                        <strong>Time:</strong> 1:00 PM
+                    </p>
                 </div>
             </div>
-        </div>
+       </div>
+       <div class="col-lg-6 col-md-6 table-responsive">
+           <br>
+           <div style="background-color:#D8D8D8" align="center">
+           <br>
+           <p align="right"><strong>Date: </strong><?php echo date("m/d/Y");?>&nbsp;&nbsp;</p>
+           <strong>Summary Report</strong>
 
+           <?php
+           echo "<p><strong>From </strong>{$details['from']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>To </strong>{$details['to']}</p>
+               <p>
+                   <strong>NAME: </strong>{$details['name']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>EMP ID: </strong>{$details['emp_id']} 
+                   &nbsp;&nbsp;&nbsp;&nbsp;
+                   <strong>DEPT: </strong>{$details['dept']}&nbsp;&nbsp;&nbsp;&nbsp;<strong>POSITION: </strong>{$details['position']}
+               </p>";
+           ?>
+           <br>
+       </div> 
+            <?php foreach ($this->result AS $data) {
+               echo "<div> {$this->DataTables($data['name'], $data['header'], $data['data'])} </div>";
+           } ?>
+       </div>
+    </div>
 </div>    
